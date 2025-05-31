@@ -198,4 +198,3 @@ export const ProductDetails: Story = {
     </Tabs>
   ),
 }; 
- 

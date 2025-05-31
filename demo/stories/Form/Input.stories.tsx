@@ -134,4 +134,3 @@ export const NumberInput: Story = {
     placeholder: '123',
   },
 }; 
- 

@@ -52,16 +52,18 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <div className="flex items-start space-x-2">
-        {checkbox}
-        <div className="grid">
+        <div>
+          {checkbox}
+        </div>
+        <div className="space-y-1 leading-none">
           <label
             htmlFor={checkboxId}
-            className="text-sm font-medium leading-4 peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
             {label}
           </label>
           {description && (
-            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{description}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>
           )}
         </div>
       </div>

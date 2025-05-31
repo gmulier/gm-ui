@@ -295,4 +295,3 @@ export const SearchResults: Story = {
     </div>
   ),
 }; 
- 

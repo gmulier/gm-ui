@@ -178,4 +178,3 @@ export const ShippingSpeed: Story = {
     </div>
   ),
 }; 
- 

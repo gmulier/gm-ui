@@ -189,4 +189,3 @@ export const TaskProgress: Story = {
     label: '4 of 10 tasks completed',
   },
 }; 
- 

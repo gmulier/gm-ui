@@ -126,4 +126,3 @@ export const NewsletterSignup: Story = {
     defaultChecked: true,
   },
 }; 
- 
