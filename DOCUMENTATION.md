@@ -69,6 +69,14 @@ import { Button } from '@guillaume/ui';
 <Button size="lg">Large</Button>
 <Button size="icon">🔔</Button>
 
+// Arrondi personnalisable
+<Button round="none">Carré</Button>
+<Button round="sm">Peu arrondi</Button>
+<Button round="md">Moyennement arrondi</Button>
+<Button round="lg">Arrondi (défaut)</Button>
+<Button round="xl">Très arrondi</Button>
+<Button round="2xl">Maximum arrondi</Button>
+
 // États
 <Button isLoading>Loading...</Button>
 <Button disabled>Disabled</Button>
@@ -86,6 +94,7 @@ import { Button } from '@guillaume/ui';
 - `fullWidth`: boolean
 - `isLoading`: boolean
 - `asChild`: boolean
+- `round`: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' - Contrôle l'arrondi des bords
 
 #### Card
 
@@ -178,6 +187,14 @@ import { Input } from '@guillaume/ui';
 <Input inputSize="md" placeholder="Medium" />
 <Input inputSize="lg" placeholder="Large" />
 
+// Arrondi personnalisable
+<Input placeholder="Carré" round="none" />
+<Input placeholder="Peu arrondi" round="sm" />
+<Input placeholder="Moyennement arrondi" round="md" />
+<Input placeholder="Arrondi (défaut)" round="lg" />
+<Input placeholder="Très arrondi" round="xl" />
+<Input placeholder="Maximum arrondi" round="2xl" />
+
 // Avec icônes
 <Input 
   placeholder="Rechercher..." 
@@ -188,6 +205,26 @@ import { Input } from '@guillaume/ui';
   type="password"
   endIcon={<EyeIcon />}
 />
+
+// Couleur de focus personnalisée
+<Input 
+  placeholder="Focus violet" 
+  focusColor="purple"
+/>
+<Input 
+  placeholder="Focus rose" 
+  focusColor="pink"
+/>
+<Input 
+  placeholder="Focus vert émeraude" 
+  focusColor="emerald"
+/>
+
+// Couleur personnalisée avec hex
+<Input 
+  placeholder="Focus custom" 
+  focusColor="#ff6b6b"
+/>
 ```
 
 **Props:**
@@ -195,6 +232,8 @@ import { Input } from '@guillaume/ui';
 - `inputSize`: 'sm' | 'md' | 'lg'
 - `startIcon`: ReactNode
 - `endIcon`: ReactNode
+- `focusColor`: 'purple' | 'pink' | 'emerald' | 'orange' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'teal' | string - Couleur de focus (couleurs prédéfinies ou couleur hex/css)
+- `round`: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' - Contrôle l'arrondi des bords
 
 #### Textarea
 
@@ -749,24 +788,50 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@g
 
 #### Separator
 
-Ligne de séparation.
+Ligne de séparation pour diviser visuellement le contenu.
 
 ```tsx
 import { Separator } from '@guillaume/ui';
 
-// Horizontal
-<Separator />
+// Horizontal (par défaut)
+<div>
+  <p>Section 1</p>
+  <Separator className="my-4" />
+  <p>Section 2</p>
+</div>
 
-// Vertical
-<div className="flex h-5 items-center space-x-4">
-  <span>Texte</span>
+// Vertical (nécessite un conteneur avec hauteur définie)
+<div className="flex h-5 items-center space-x-4 text-sm">
+  <span>Menu</span>
   <Separator orientation="vertical" />
-  <span>Texte</span>
+  <span>À propos</span>
+  <Separator orientation="vertical" />
+  <span>Contact</span>
+</div>
+
+// Dans un menu
+<div className="w-48 rounded border p-2">
+  <button className="w-full p-2 text-left">Profil</button>
+  <button className="w-full p-2 text-left">Paramètres</button>
+  <Separator className="my-1" />
+  <button className="w-full p-2 text-left">Déconnexion</button>
+</div>
+
+// Dans une barre d'outils
+<div className="flex items-center gap-2">
+  <Button size="sm">Copier</Button>
+  <Separator orientation="vertical" className="h-6" />
+  <Button size="sm">Coller</Button>
+  <Separator orientation="vertical" className="h-6" />
+  <Button size="sm">Supprimer</Button>
 </div>
 ```
 
 **Props:**
-- `orientation`: 'horizontal' | 'vertical'
+- `orientation`: 'horizontal' | 'vertical' (défaut: 'horizontal')
+- `decorative`: boolean (défaut: true) - Si false, le séparateur est accessible aux lecteurs d'écran
+
+**💡 Conseil:** Pour les séparateurs verticaux, assurez-vous que le conteneur parent a une hauteur définie (`h-5`, `h-6`, etc.) et utilisez `flex items-center` pour l'alignement.
 
 #### Slider
 

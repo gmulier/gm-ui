@@ -32,9 +32,21 @@ export interface CheckboxProps
 }
 
 const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ className, variant, size, label, description, id, ...props }, ref) => {
+  ({ className, variant, size = 'md', label, description, id, ...props }, ref) => {
     const generatedId = React.useId();
     const checkboxId = id || generatedId;
+
+    // Calculer le padding-top pour aligner la première ligne du label avec le centre de la checkbox
+    const getLabelPadding = (checkboxSize: 'sm' | 'md' | 'lg') => {
+      switch (checkboxSize) {
+        case 'sm': return 'pt-1'; // Plus de padding pour faire descendre le texte
+        case 'md': return 'pt-0.5'; // Micro-ajustement en plus pour medium
+        case 'lg': return '-mt-px'; // Marge négative pour faire encore plus monter le texte
+        default: return 'pt-0.5';
+      }
+    };
+
+    const checkboxSize = size || 'md';
 
     const checkbox = (
       <input
@@ -51,19 +63,22 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     }
 
     return (
-      <div className="flex items-start space-x-2">
-        <div>
+      <div className="flex items-start gap-2">
+        <div className="flex-shrink-0">
           {checkbox}
         </div>
-        <div className="space-y-1 leading-none">
+        <div className="min-w-0 flex-1">
           <label
             htmlFor={checkboxId}
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className={cn(
+              "text-sm font-medium block peer-disabled:cursor-not-allowed peer-disabled:opacity-70",
+              getLabelPadding(checkboxSize)
+            )}
           >
             {label}
           </label>
           {description && (
-            <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 leading-relaxed">{description}</p>
           )}
         </div>
       </div>

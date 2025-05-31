@@ -11,12 +11,12 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     defaultValue: {
-      control: false,
+      control: 'object',
       description: 'Default value(s) for the slider - can be a single value [50] or range [25, 75]',
     },
     value: {
       control: false,
-      description: 'Controlled value(s) for the slider',
+      description: 'Controlled value(s) for the slider - use useState in stories to demonstrate',
     },
     max: {
       control: { type: 'number', min: 1, max: 1000 },
@@ -33,6 +33,19 @@ const meta = {
     disabled: {
       control: 'boolean',
       description: 'Whether the slider is disabled',
+    },
+    showValue: {
+      control: 'boolean',
+      description: 'Show current value and min/max labels',
+    },
+    label: {
+      control: 'text',
+      description: 'Label for the slider',
+    },
+    size: {
+      control: 'select',
+      options: ['sm', 'md', 'lg'],
+      description: 'Size variant',
     },
     onValueChange: {
       action: 'valueChanged',
@@ -291,4 +304,107 @@ export const ColorPicker: Story = {
       </div>
     );
   },
+};
+
+// Stories demandées par l'utilisateur
+
+// Story avec mode controlled et useState visible
+export const ControlledSlider: Story = {
+  render: (args) => {
+    const [value, setValue] = React.useState(args.defaultValue || [50]);
+    
+    const handleValueChange = (newValue: number[]) => {
+      setValue(newValue);
+      // Log the action to show callback behavior
+      console.log('Value changed:', newValue);
+    };
+    
+    return (
+      <div className="space-y-4">
+        <div className="text-sm text-gray-600">
+          Current value: <strong>{value.join(', ')}</strong>
+        </div>
+        <Slider
+          value={value}
+          onValueChange={handleValueChange}
+          {...args}
+        />
+        <button 
+          onClick={() => setValue([75])}
+          className="px-3 py-1 bg-blue-500 text-white rounded text-sm hover:bg-blue-600"
+        >
+          Set to 75
+        </button>
+      </div>
+    );
+  },
+  args: {
+    defaultValue: [50],
+    max: 100,
+    min: 0,
+    step: 1,
+    showValue: true,
+    label: 'Controlled Slider',
+  },
+};
+
+// Story dédiée pour Range Slider
+export const RangeSliderDemo: Story = {
+  args: {
+    defaultValue: [25, 75],
+    max: 100,
+    min: 0,
+    step: 1,
+    showValue: true,
+    label: 'Range Selection',
+  },
+};
+
+// Story dédiée pour état disabled
+export const DisabledSlider: Story = {
+  args: {
+    defaultValue: [60],
+    disabled: true,
+    showValue: true,
+    label: 'Disabled Slider',
+    max: 100,
+    min: 0,
+  },
+};
+
+// Story pour démontrer showValue avec min/max
+export const ShowValueDemo: Story = {
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h3 className="text-sm font-medium mb-2">Sans showValue</h3>
+        <Slider
+          defaultValue={[30]}
+          min={0}
+          max={100}
+          label="Volume"
+        />
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2">Avec showValue (valeur + min/max)</h3>
+        <Slider
+          defaultValue={[30]}
+          min={0}
+          max={100}
+          showValue={true}
+          label="Volume"
+        />
+      </div>
+      <div>
+        <h3 className="text-sm font-medium mb-2">Range avec showValue</h3>
+        <Slider
+          defaultValue={[20, 80]}
+          min={0}
+          max={100}
+          showValue={true}
+          label="Price Range"
+        />
+      </div>
+    </div>
+  ),
 }; 

@@ -56,33 +56,52 @@ export interface SliderProps
     VariantProps<typeof sliderVariants> {
   showValue?: boolean;
   label?: string;
+  min?: number;
+  max?: number;
 }
 
 const Slider = React.forwardRef<
   React.ElementRef<typeof SliderPrimitive.Root>,
   SliderProps
->(({ className, size, showValue = false, label, value, ...props }, ref) => {
-  const displayValue = value?.[0] ?? props.defaultValue?.[0] ?? 0;
+>(({ className, size, showValue = false, label, value, min = 0, max = 100, ...props }, ref) => {
+  const currentValue = value ?? props.defaultValue ?? [0];
+  const isRange = currentValue.length > 1;
 
   return (
     <div className="w-full">
       {(showValue || label) && (
         <div className="mb-2 flex justify-between text-sm">
           {label && <span className="text-gray-700 dark:text-gray-300">{label}</span>}
-          {showValue && <span className="text-gray-600 dark:text-gray-400">{displayValue}</span>}
+          {showValue && (
+            <span className="text-gray-600 dark:text-gray-400">
+              {isRange 
+                ? `${currentValue[0]} - ${currentValue[1]}`
+                : currentValue[0]
+              }
+            </span>
+          )}
         </div>
       )}
       <SliderPrimitive.Root
         ref={ref}
         className={cn(sliderVariants({ size }), className)}
         value={value}
+        min={min}
+        max={max}
         {...props}
       >
         <SliderPrimitive.Track className={cn(sliderTrackVariants({ size }))}>
           <SliderPrimitive.Range className="absolute h-full bg-primary-500 dark:bg-primary-600" />
         </SliderPrimitive.Track>
         <SliderPrimitive.Thumb className={cn(sliderThumbVariants({ size }))} />
+        {isRange && <SliderPrimitive.Thumb className={cn(sliderThumbVariants({ size }))} />}
       </SliderPrimitive.Root>
+      {showValue && (
+        <div className="mt-1 flex justify-between text-xs text-gray-500 dark:text-gray-400">
+          <span>{min}</span>
+          <span>{max}</span>
+        </div>
+      )}
     </div>
   );
 });

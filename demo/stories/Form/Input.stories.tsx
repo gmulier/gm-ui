@@ -9,6 +9,9 @@ const meta = {
     layout: 'centered',
   },
   tags: ['autodocs'],
+  args: {
+    round: 'lg',
+  },
   argTypes: {
     variant: {
       control: 'select',
@@ -17,6 +20,11 @@ const meta = {
     inputSize: {
       control: 'select',
       options: ['sm', 'md', 'lg'],
+    },
+    round: {
+      control: 'select',
+      options: ['none', 'sm', 'md', 'lg', 'xl', '2xl'],
+      description: 'Contrôle l\'arrondi des bords',
     },
     disabled: {
       control: 'boolean',
@@ -27,6 +35,10 @@ const meta = {
     type: {
       control: 'select',
       options: ['text', 'email', 'password', 'number', 'tel', 'url'],
+    },
+    focusColor: {
+      control: 'text',
+      description: 'Couleur de focus : couleurs prédéfinies (purple, pink, emerald...) ou couleur hex (#ff6b6b)',
     },
   },
 } satisfies Meta<typeof Input>;
@@ -132,5 +144,85 @@ export const NumberInput: Story = {
   args: {
     type: 'number',
     placeholder: '123',
+  },
+};
+
+// Custom Focus Colors
+export const PurpleFocus: Story = {
+  args: {
+    placeholder: 'Focus violet',
+    focusColor: 'purple',
+  },
+};
+
+export const PinkFocus: Story = {
+  args: {
+    placeholder: 'Focus rose',
+    focusColor: 'pink',
+  },
+};
+
+export const EmeraldFocus: Story = {
+  args: {
+    placeholder: 'Focus émeraude',
+    focusColor: 'emerald',
+  },
+};
+
+export const OrangeFocus: Story = {
+  args: {
+    placeholder: 'Focus orange',
+    focusColor: 'orange',
+  },
+};
+
+export const CustomHexFocus: Story = {
+  args: {
+    placeholder: 'Focus couleur custom',
+    focusColor: '#ff6b6b',
+  },
+};
+
+export const CustomFocusWithIcon: Story = {
+  args: {
+    placeholder: 'Rechercher avec focus violet...',
+    focusColor: 'purple',
+    startIcon: <SearchIcon />,
+  },
+};
+
+// Round Variations
+export const SquareInput: Story = {
+  args: {
+    placeholder: 'Input carré',
+    round: 'none',
+  },
+};
+
+export const SlightlyRounded: Story = {
+  args: {
+    placeholder: 'Légèrement arrondi',
+    round: 'sm',
+  },
+};
+
+export const MediumRounded: Story = {
+  args: {
+    placeholder: 'Moyennement arrondi',
+    round: 'md',
+  },
+};
+
+export const VeryRounded: Story = {
+  args: {
+    placeholder: 'Très arrondi',
+    round: 'xl',
+  },
+};
+
+export const MaxRounded: Story = {
+  args: {
+    placeholder: 'Maximum arrondi',
+    round: '2xl',
   },
 }; 

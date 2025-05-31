@@ -1,7 +1,6 @@
 import type { Preview } from '@storybook/react'
 import * as React from 'react';
-import '../index.css';
-// Removed the problematic CSS import since dist/index.css doesn't exist
+import '../../src/styles/globals.css';
 
 const preview: Preview = {
   parameters: {

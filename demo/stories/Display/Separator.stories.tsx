@@ -7,15 +7,37 @@ const meta = {
   component: Separator,
   parameters: {
     layout: 'centered',
+    docs: {
+      description: {
+        component: 'Un séparateur visuel pour diviser le contenu. Peut être horizontal ou vertical selon le contexte.',
+      },
+    },
   },
   tags: ['autodocs'],
   argTypes: {
     orientation: {
       control: 'select',
       options: ['horizontal', 'vertical'],
+      description: 'Orientation du séparateur',
+      table: {
+        type: { summary: 'horizontal | vertical' },
+        defaultValue: { summary: 'horizontal' },
+      },
     },
     decorative: {
       control: 'boolean',
+      description: 'Si true, le séparateur est purement décoratif (pas lu par les lecteurs d\'écran)',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'true' },
+      },
+    },
+    className: {
+      control: 'text',
+      description: 'Classes CSS supplémentaires',
+      table: {
+        type: { summary: 'string' },
+      },
     },
   },
 } satisfies Meta<typeof Separator>;
@@ -23,16 +45,38 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Basic Separator
+// Basic Separator with proper context for both orientations
 export const Default: Story = {
   args: {},
-  decorators: [
-    (Story) => (
-      <div style={{ width: 300 }}>
-        <Story />
+  render: (args) => {
+    const isVertical = args.orientation === 'vertical';
+    
+    if (isVertical) {
+      return (
+        <div className="flex h-20 items-center space-x-4 text-sm">
+          <div className="flex h-full items-center">
+            <span>Gauche</span>
+          </div>
+          <Separator {...args} />
+          <div className="flex h-full items-center">
+            <span>Droite</span>
+          </div>
+        </div>
+      );
+    }
+    
+    return (
+      <div className="w-64">
+        <div>
+          <span className="text-sm">Contenu du haut</span>
+        </div>
+        <Separator {...args} className="my-4" />
+        <div>
+          <span className="text-sm">Contenu du bas</span>
+        </div>
       </div>
-    ),
-  ],
+    );
+  },
 };
 
 // Horizontal Separator
@@ -70,6 +114,37 @@ export const Vertical: Story = {
       <div>Docs</div>
       <Separator {...args} />
       <div>Source</div>
+    </div>
+  ),
+};
+
+// Show both orientations side by side
+export const Orientations: Story = {
+  render: () => (
+    <div className="space-y-8">
+      <div>
+        <h4 className="mb-4 text-sm font-medium">Horizontal (par défaut)</h4>
+        <div className="w-64">
+          <div className="text-sm text-gray-600">Section 1</div>
+          <Separator className="my-3" />
+          <div className="text-sm text-gray-600">Section 2</div>
+          <Separator className="my-3" />
+          <div className="text-sm text-gray-600">Section 3</div>
+        </div>
+      </div>
+      
+      <div>
+        <h4 className="mb-4 text-sm font-medium">Vertical (avec hauteur définie)</h4>
+        <div className="flex h-16 items-center space-x-4 text-sm text-gray-600">
+          <div>Menu</div>
+          <Separator orientation="vertical" />
+          <div>À propos</div>
+          <Separator orientation="vertical" />
+          <div>Contact</div>
+          <Separator orientation="vertical" />
+          <div>Blog</div>
+        </div>
+      </div>
     </div>
   ),
 };
