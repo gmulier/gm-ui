@@ -1,30 +1,32 @@
-# Guillaume UI - Stories Storybook
+# Component Stories
 
-Ce dossier contient toutes les stories des composants de la bibliothèque `@guillaume/ui`, organisées par catégorie.
+This folder contains all the stories for the `@gm/ui` component library, organized by category.
 
 ## Structure
 
-```
-stories/
-├── Display/           # Composants d'affichage (Card, Button, Badge, Avatar, etc.)
-├── Form/              # Composants de formulaire (Input, Select, Checkbox, etc.)
-├── Navigation/        # Composants de navigation (Menu, Tabs, Breadcrumb, etc.)
-├── Feedback/          # Composants de feedback (Alert, Toast, Progress, etc.)
-├── Overlay/           # Composants overlay/modal (Modal, Popover, Accordion, etc.)
-├── assets/            # Assets statiques pour Storybook
-└── Configure.mdx      # Documentation de configuration Storybook
-```
+- `Core/` : Core components (Button, Card, etc.)
+- `Forms/` : Form components (Input, Select, etc.)
+- `Feedback/` : Feedback components (Alert, Progress, etc.)
+- `Navigation/` : Navigation components (Tabs, Menu, etc.)
+- `Overlay/` : Overlay components (Modal, Popover, etc.)
 
-## Organisation des stories
+## Usage
 
-Chaque story correspond à un composant de la bibliothèque principale (`src/components/`) et démontre toutes ses variantes, états et cas d'usage.
+Each story shows different variants and states of the corresponding component.
 
-Les stories suivent la convention de nommage :
+## Development
+
+Each story corresponds to a component from the main library (`src/components/`) and demonstrates all its variants, states and use cases.
+
+## Story Organization
+
+Stories follow the naming convention:
 - `ComponentName.stories.tsx`
 
-## Développement
+## Development
 
-Pour lancer Storybook en mode développement :
+To launch Storybook in development mode:
+
 ```bash
-npm run dev:demo
+npm run storybook
 ``` 

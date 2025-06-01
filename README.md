@@ -1,4 +1,4 @@
-# @guillaume/ui
+# @gm/ui
 
 A modern React UI component library built with TypeScript and Tailwind CSS. Features a warm color palette with rounded components for a friendly, engaging user experience.
 
@@ -10,26 +10,26 @@ A modern React UI component library built with TypeScript and Tailwind CSS. Feat
 - **Type Safety**: Full TypeScript support with comprehensive type definitions
 - **Dark Mode Ready**: All components support automatic dark mode switching
 
-## 🚀 Quick Start - Voir la démo
+## 🚀 Quick Start - See the Demo
 
-Pour voir tous les composants en action dans votre navigateur :
+To see all components in action in your browser:
 
 ```bash
-# 1. Clonez le repo
-git clone https://github.com/guillaumemulier/guillaume-ui.git
-cd guillaume-ui
+# 1. Clone the repo
+git clone https://github.com/gmulier/gm-ui.git
+cd gm-ui
 
-# 2. Installez les dépendances
+# 2. Install dependencies
 npm install
 
-# 3. Installez les dépendances de la démo
+# 3. Install demo dependencies
 cd demo && npm install && cd ..
 
-# 4. Lancez la démo
+# 4. Launch the demo
 npm run demo
 ```
 
-La démo s'ouvrira automatiquement sur `http://localhost:5173` et vous pourrez voir tous les composants avec leurs différentes variantes.
+The demo will automatically open at `http://localhost:5173` and you can see all components with their different variants.
 
 ## 📦 Installation
 
@@ -37,8 +37,8 @@ La démo s'ouvrira automatiquement sur `http://localhost:5173` et vous pourrez v
 
 1. Clone this repository:
 ```bash
-git clone https://github.com/guillaumemulier/guillaume-ui.git
-cd guillaume-ui
+git clone https://github.com/gmulier/gm-ui.git
+cd gm-ui
 ```
 
 2. Install dependencies and build:
@@ -54,7 +54,7 @@ npm link
 
 4. In your React project:
 ```bash
-npm link @guillaume/ui
+npm link @gm/ui
 ```
 
 ### Using as a Git dependency
@@ -63,7 +63,7 @@ Add to your `package.json`:
 ```json
 {
   "dependencies": {
-    "@guillaume/ui": "github:guillaumemulier/guillaume-ui"
+    "@gm/ui": "github:gmulier/gm-ui"
   }
 }
 ```
@@ -79,7 +79,7 @@ Add the UI library to your Tailwind CSS configuration:
 module.exports = {
   content: [
     // ... your other content paths
-    "./node_modules/@guillaume/ui/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/@gm/ui/dist/**/*.{js,ts,jsx,tsx}",
   ],
   // ... rest of your config
 }
@@ -88,14 +88,14 @@ module.exports = {
 ### Import Components
 
 ```tsx
-import { Button, Card, Input, Modal, Badge, Spinner } from '@guillaume/ui';
+import { Button, Card, Input, Modal, Badge, Spinner } from '@gm/ui';
 
 function MyComponent() {
   return (
     <Card variant="elevated" padding="lg">
       <CardHeader>
         <CardTitle>Welcome</CardTitle>
-        <CardDescription>Get started with @guillaume/ui</CardDescription>
+        <CardDescription>Get started with @gm/ui</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -199,79 +199,120 @@ A small label component for status and categorization.
 ```
 
 **Props:**
-- `variant`: 'default' | 'secondary' | 'destructive' | 'success' | 'warning' | 'outline'
+- `variant`: 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning'
 
 ### Spinner
 
-A loading spinner component.
+A loading indicator component with multiple sizes.
 
 ```tsx
-<Spinner size="md" color="primary" />
+<Spinner size="md" />
 ```
 
 **Props:**
 - `size`: 'sm' | 'md' | 'lg' | 'xl'
-- `color`: 'primary' | 'secondary' | 'white' | 'current'
 
-## 🛠️ Development
+### Avatar
 
-### Scripts
+Profile picture component with fallback support.
 
-- `npm run dev` - Start development mode with watch
-- `npm run build` - Build the library
-- `npm run demo` - Launch the interactive demo
-- `npm run lint` - Run ESLint
-- `npm run type-check` - Run TypeScript type checking
+```tsx
+<Avatar>
+  <AvatarImage src="/avatar.jpg" />
+  <AvatarFallback>JD</AvatarFallback>
+</Avatar>
+```
 
-### Adding New Components
+### Input with Icons
 
-1. Create component in `src/components/ComponentName.tsx`
-2. Export from `src/index.ts`
-3. Add documentation to README
-4. Build and test
+Enhanced input component with start and end icon support.
 
-## 🎨 Customization
+```tsx
+<Input
+  placeholder="Search..."
+  startIcon={<SearchIcon />}
+  endIcon={<ClearIcon />}
+/>
+```
 
-### Using Custom Colors
+## 🎯 Complete Example
 
-The library uses a warm color palette by default. You can override these in your project's Tailwind config:
+```tsx
+import { 
+  Button, 
+  Card, 
+  CardHeader, 
+  CardTitle, 
+  CardContent,
+  Input,
+  Badge,
+  Avatar,
+  AvatarImage,
+  AvatarFallback
+} from '@gm/ui';
 
-```js
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        primary: {
-          // Your custom primary colors
-        },
-        secondary: {
-          // Your custom secondary colors
-        },
-      },
-    },
-  },
+export function UserProfile() {
+  return (
+    <Card variant="elevated" className="max-w-md">
+      <CardHeader className="text-center">
+        <Avatar className="mx-auto mb-4">
+          <AvatarImage src="/user-avatar.jpg" />
+          <AvatarFallback>JD</AvatarFallback>
+        </Avatar>
+        <CardTitle>John Doe</CardTitle>
+        <Badge variant="success">Active</Badge>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <Input placeholder="Email address" />
+        <Input placeholder="Phone number" />
+        <Button variant="primary" fullWidth>
+          Update Profile
+        </Button>
+      </CardContent>
+    </Card>
+  );
 }
 ```
 
-### Extending Components
+## 🛠 Development
 
-All components accept standard HTML attributes and can be extended:
+### Setup
 
-```tsx
-<Button
-  className="custom-class"
-  onClick={handleClick}
-  data-testid="my-button"
->
-  Custom Button
-</Button>
+```bash
+# Install dependencies
+npm install
+
+# Build the library
+npm run build
+
+# Watch for changes during development
+npm run dev
 ```
 
-## 📝 License
+### Run Storybook
 
-MIT License - feel free to use in your projects!
+```bash
+# Start Storybook
+npm run storybook
+
+# Build Storybook for production
+npm run build-storybook
+```
+
+## 📄 License
+
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request. 
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📧 Contact
+
+Guillaume Mulier - [@gmulier](https://github.com/gmulier)
+
+Project Link: [https://github.com/gmulier/gm-ui](https://github.com/gmulier/gm-ui) 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  // Core components
   Button,
   Card,
   CardHeader,
@@ -8,6 +9,77 @@ import {
   CardContent,
   CardFooter,
   Input,
+  Badge,
+  Spinner,
+  Avatar,
+  AvatarImage,
+  AvatarFallback,
+  SimpleAvatar,
+  
+  // Form components
+  Checkbox,
+  Label,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Switch,
+  Radio,
+  RadioGroup,
+  Textarea,
+  Slider,
+  
+  // Feedback components
+  Alert,
+  AlertTitle,
+  AlertDescription,
+  DismissibleAlert,
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+  Progress,
+  
+  // Navigation components
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+  Menu,
+  MenuTrigger,
+  MenuContent,
+  MenuItem,
+  MenuSeparator,
+  
+  // UI components
+  Skeleton,
+  SkeletonText,
+  SkeletonAvatar,
+  SkeletonButton,
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+  Separator,
+  Pagination,
+  PaginationContent,
+  PaginationLink,
+  PaginationItem,
+  PaginationPrevious,
+  PaginationNext,
+  PaginationEllipsis,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  
+  // Modal components
   Modal,
   ModalTrigger,
   ModalContent,
@@ -15,202 +87,722 @@ import {
   ModalTitle,
   ModalDescription,
   ModalFooter,
-  Badge,
-  Spinner,
 } from '../src';
 
 export function Demo() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedTab, setSelectedTab] = useState('overview');
+  const [sliderValue, setSliderValue] = useState([50]);
+  const [progressValue, setProgressValue] = useState(65);
+  const [switchChecked, setSwitchChecked] = useState(false);
+  const [checkboxChecked, setCheckboxChecked] = useState(false);
+  const [radioValue, setRadioValue] = useState('option1');
+  const [selectValue, setSelectValue] = useState('');
 
-  const handleLoadingClick = () => {
+  const handleLoadingDemo = () => {
     setIsLoading(true);
-    setTimeout(() => setIsLoading(false), 2000);
+    // Copy GitHub installation command to clipboard
+    const installCommand = 'npm install github:gmulier/gm-ui';
+    navigator.clipboard.writeText(installCommand).then(() => {
+      setTimeout(() => {
+        setIsLoading(false);
+        alert('📋 Installation command copied to clipboard!\n\n' + installCommand + '\n\n💡 Installation via GitHub (package not yet on npm)');
+      }, 1500);
+    }).catch(() => {
+      setTimeout(() => {
+        setIsLoading(false);
+        alert('💡 Installation command:\n' + installCommand + '\n\n📝 Installation via GitHub (package not yet on npm)');
+      }, 1500);
+    });
+  };
+
+  const scrollToExamples = () => {
+    const examplesSection = document.getElementById('examples-section');
+    if (examplesSection) {
+      examplesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const incrementProgress = () => {
+    setProgressValue(prev => Math.min(prev + 10, 100));
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-8">
-      <div className="max-w-6xl mx-auto space-y-8">
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
-          @guillaume/ui Component Library
-        </h1>
-
-        {/* Buttons Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Buttons</CardTitle>
-            <CardDescription>Various button styles and states</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-4">
-              <Button variant="primary">Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="link">Link</Button>
-              <Button variant="destructive">Destructive</Button>
-              <Button variant="primary" size="sm">Small</Button>
-              <Button variant="primary" size="lg">Large</Button>
-              <Button variant="primary" size="icon">
-                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </Button>
-              <Button variant="primary" isLoading onClick={handleLoadingClick}>
-                {isLoading ? 'Loading' : 'Click to Load'}
-              </Button>
-              <Button variant="primary" disabled>Disabled</Button>
+    <TooltipProvider>
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
+        {/* Header */}
+        <header className="border-b bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm sticky top-0 z-50">
+          <div className="max-w-7xl mx-auto px-6 py-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center">
+                  <span className="text-white font-bold text-lg">G</span>
+                </div>
+                <div>
+                  <h1 className="text-xl font-bold text-gray-900 dark:text-white">@gm/ui</h1>
+                  <p className="text-sm text-gray-600 dark:text-gray-400">Modern React Component Library</p>
+                </div>
+              </div>
+              
+              <nav className="flex items-center space-x-4">
+                <Button variant="ghost" size="sm">
+                  GitHub
+                </Button>
+                <Button variant="outline" size="sm" asChild>
+                  <a href="https://storybook-gm-ui.vercel.app" target="_blank" rel="noopener noreferrer">
+                    📚 Technical Documentation
+                  </a>
+                </Button>
+                <Button variant="primary" size="sm">
+                  Get Started
+                </Button>
+              </nav>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </header>
 
-        {/* Cards Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Card variant="default">
-            <CardHeader>
-              <CardTitle>Default Card</CardTitle>
-              <CardDescription>A basic card with default styling</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>This is the card content area where you can place any content.</p>
-            </CardContent>
-          </Card>
+        {/* Hero Section */}
+        <section className="py-20 px-6">
+          <div className="max-w-7xl mx-auto text-center">
+            <div className="mb-8">
+              <Badge variant="outline" className="mb-4">
+                🎨 New version v0.1.0
+              </Badge>
+              <h2 className="text-5xl font-bold text-gray-900 dark:text-white mb-6">
+                Beautiful <span className="text-gradient bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">components</span>
+                <br />for your React applications
+              </h2>
+              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+                A modern component library built with TypeScript and Tailwind CSS. 
+                Warm color palette, rounded design, and optimized performance.
+              </p>
+              <div className="flex items-center justify-center gap-4">
+                <Button size="lg" onClick={handleLoadingDemo} isLoading={isLoading}>
+                  {isLoading ? 'Installing...' : 'Install Now'}
+                </Button>
+                <Button variant="outline" size="lg" onClick={scrollToExamples}>
+                  View Examples
+                </Button>
+              </div>
+            </div>
 
-          <Card variant="elevated">
-            <CardHeader>
-              <CardTitle>Elevated Card</CardTitle>
-              <CardDescription>Card with shadow elevation</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>This card has a more prominent shadow for emphasis.</p>
-            </CardContent>
-          </Card>
+            {/* Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-orange-500 mb-2">25+</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Components</div>
+                </CardContent>
+              </Card>
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-red-500 mb-2">100%</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">TypeScript</div>
+                </CardContent>
+              </Card>
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-yellow-500 mb-2">16</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Dependencies</div>
+                </CardContent>
+              </Card>
+              <Card className="text-center">
+                <CardContent className="pt-6">
+                  <div className="text-3xl font-bold text-orange-600 mb-2">✓</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">Accessible (A11Y)</div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
 
-          <Card variant="outlined">
-            <CardHeader>
-              <CardTitle>Outlined Card</CardTitle>
-              <CardDescription>Card with colored border</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>This card uses a primary color border for visual distinction.</p>
-            </CardContent>
-          </Card>
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-6 pb-20" id="examples-section">
+          <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
+            <TabsList className="grid w-full grid-cols-5 mb-12">
+              <TabsTrigger value="overview">Overview</TabsTrigger>
+              <TabsTrigger value="forms">Forms</TabsTrigger>
+              <TabsTrigger value="feedback">Feedback</TabsTrigger>
+              <TabsTrigger value="navigation">Navigation</TabsTrigger>
+              <TabsTrigger value="layout">Layout</TabsTrigger>
+            </TabsList>
 
-          <Card variant="interactive">
-            <CardHeader>
-              <CardTitle>Interactive Card</CardTitle>
-              <CardDescription>Hover and click me!</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>This card responds to hover and click interactions.</p>
-            </CardContent>
-          </Card>
+            {/* Overview Tab */}
+            <TabsContent value="overview" className="space-y-12">
+              {/* Buttons Showcase */}
+              <section>
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Buttons</h3>
+                  <p className="text-gray-600 dark:text-gray-400">Expressive buttons for every action</p>
+                </div>
+                
+                <Card className="p-8">
+                  <div className="space-y-6">
+                    <div className="flex flex-wrap gap-4 justify-center">
+                      <Button variant="primary" size="lg">Primary</Button>
+                      <Button variant="secondary" size="lg">Secondary</Button>
+                      <Button variant="outline" size="lg">Outline</Button>
+                      <Button variant="ghost" size="lg">Ghost</Button>
+                      <Button variant="destructive" size="lg">Destructive</Button>
+                    </div>
+                    
+                    <div className="flex flex-wrap gap-4 justify-center">
+                      <Button size="sm">Small</Button>
+                      <Button size="md">Medium</Button>
+                      <Button size="lg">Large</Button>
+                      <Button size="icon">
+                        <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                      </Button>
+                    </div>
+
+                    <div className="flex flex-wrap gap-4 justify-center">
+                      <Button variant="primary" isLoading>Loading</Button>
+                      <Button variant="primary" disabled>Disabled</Button>
+                      <Button variant="link">Link Button</Button>
+                    </div>
+                  </div>
+                </Card>
+              </section>
+
+              {/* Cards Showcase */}
+              <section>
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Cards</h3>
+                  <p className="text-gray-600 dark:text-gray-400">Flexible containers to organize your content</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+                  <Card variant="default">
+                    <CardHeader>
+                      <CardTitle>Default Card</CardTitle>
+                      <CardDescription>Simple and clear description</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm">Card content with explanatory text.</p>
+                    </CardContent>
+                    <CardFooter>
+                      <Button size="sm" className="w-full">Action</Button>
+                    </CardFooter>
+                  </Card>
+
+                  <Card variant="elevated">
+                    <CardHeader>
+                      <CardTitle>Elevated Card</CardTitle>
+                      <CardDescription>With pronounced shadow</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex items-center space-x-2">
+                        <SimpleAvatar
+                          src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32"
+                          fallback="JD"
+                          size="sm"
+                        />
+                        <div>
+                          <p className="text-sm font-medium">John Doe</p>
+                          <p className="text-xs text-gray-500">Developer</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card variant="outlined">
+                    <CardHeader>
+                      <CardTitle>Outlined Card</CardTitle>
+                      <CardDescription>With colored border</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-2">
+                        <Badge variant="success">Active</Badge>
+                        <p className="text-sm">Real-time status</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card variant="interactive">
+                    <CardHeader>
+                      <CardTitle>Interactive Card</CardTitle>
+                      <CardDescription>Click to interact</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-center">
+                        <Spinner size="md" />
+                        <p className="text-sm mt-2">Loading...</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </section>
+
+              {/* Avatars & Badges */}
+              <section>
+                <div className="text-center mb-8">
+                  <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Avatars & Badges</h3>
+                  <p className="text-gray-600 dark:text-gray-400">Visual identity and status indicators</p>
+                </div>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-4">Avatars</h4>
+                    <div className="flex items-center space-x-4">
+                      <SimpleAvatar
+                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40"
+                        fallback="JD"
+                        size="sm"
+                      />
+                      <SimpleAvatar
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=48"
+                        fallback="AB"
+                        size="md"
+                      />
+                      <SimpleAvatar
+                        src="https://images.unsplash.com/photo-1494790108755-2616b612b108?w=56"
+                        fallback="CD"
+                        size="lg"
+                      />
+                      <SimpleAvatar fallback="XL" size="xl" />
+                    </div>
+                  </Card>
+
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-4">Badges</h4>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge>Default</Badge>
+                      <Badge variant="secondary">Secondary</Badge>
+                      <Badge variant="success">Success</Badge>
+                      <Badge variant="warning">Warning</Badge>
+                      <Badge variant="destructive">Error</Badge>
+                      <Badge variant="outline">Outline</Badge>
+                    </div>
+                  </Card>
+                </div>
+              </section>
+            </TabsContent>
+
+            {/* Forms Tab */}
+            <TabsContent value="forms" className="space-y-8">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Form Components</h3>
+                <p className="text-gray-600 dark:text-gray-400">Collect and validate user data with style</p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Input & Textarea */}
+                <Card className="p-6">
+                  <h4 className="font-semibold mb-4">Input Fields</h4>
+                  <div className="space-y-4">
+                    <div>
+                      <Label htmlFor="email">Email</Label>
+                      <Input 
+                        id="email"
+                        type="email" 
+                        placeholder="your@email.com"
+                        startIcon={
+                          <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                          </svg>
+                        }
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="password">Password</Label>
+                      <Input 
+                        id="password"
+                        type="password" 
+                        placeholder="••••••••"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="message">Message</Label>
+                      <Textarea 
+                        id="message"
+                        placeholder="Your message..."
+                        rows={4}
+                      />
+                    </div>
+                  </div>
+                </Card>
+
+                {/* Select & Controls */}
+                <Card className="p-6">
+                  <h4 className="font-semibold mb-4">Controls</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <Label>Selection</Label>
+                      <Select value={selectValue} onValueChange={setSelectValue}>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Choose an option" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="option1">Option 1</SelectItem>
+                          <SelectItem value="option2">Option 2</SelectItem>
+                          <SelectItem value="option3">Option 3</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      <Switch 
+                        id="notifications"
+                        checked={switchChecked}
+                        onCheckedChange={setSwitchChecked}
+                      />
+                      <Label htmlFor="notifications">Enable notifications</Label>
+                    </div>
+
+                    <div className="flex items-center space-x-2">
+                      <Checkbox 
+                        id="terms"
+                        checked={checkboxChecked}
+                        onChange={(e) => setCheckboxChecked(e.target.checked)}
+                      />
+                      <Label htmlFor="terms">I accept the terms and conditions</Label>
+                    </div>
+
+                    <div>
+                      <Label>Preferences</Label>
+                      <RadioGroup className="mt-2">
+                        <div className="flex items-center space-x-2">
+                          <Radio 
+                            value="option1" 
+                            id="r1" 
+                            name="preferences"
+                            checked={radioValue === 'option1'}
+                            onChange={() => setRadioValue('option1')}
+                          />
+                          <Label htmlFor="r1">Option 1</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <Radio 
+                            value="option2" 
+                            id="r2" 
+                            name="preferences"
+                            checked={radioValue === 'option2'}
+                            onChange={() => setRadioValue('option2')}
+                          />
+                          <Label htmlFor="r2">Option 2</Label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+
+                    <div>
+                      <Label>Volume: {sliderValue[0]}%</Label>
+                      <Slider
+                        value={sliderValue}
+                        onValueChange={setSliderValue}
+                        max={100}
+                        step={1}
+                        className="mt-2"
+                      />
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </TabsContent>
+
+            {/* Feedback Tab */}
+            <TabsContent value="feedback" className="space-y-8">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Feedback Components</h3>
+                <p className="text-gray-600 dark:text-gray-400">Communicate clearly with your users</p>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Alerts */}
+                <Card className="p-6">
+                  <h4 className="font-semibold mb-4">Alerts</h4>
+                  <div className="space-y-4">
+                    <Alert>
+                      <AlertTitle>Information</AlertTitle>
+                      <AlertDescription>
+                        Here is important information to remember.
+                      </AlertDescription>
+                    </Alert>
+                    
+                    <Alert variant="error">
+                      <AlertTitle>Error</AlertTitle>
+                      <AlertDescription>
+                        An error occurred during processing.
+                      </AlertDescription>
+                    </Alert>
+
+                    <Alert variant="warning">
+                      <AlertTitle>Warning</AlertTitle>
+                      <AlertDescription>
+                        This action cannot be undone.
+                      </AlertDescription>
+                    </Alert>
+
+                    <DismissibleAlert variant="success">
+                      <AlertTitle>Success</AlertTitle>
+                      <AlertDescription>
+                        Your changes have been saved.
+                      </AlertDescription>
+                    </DismissibleAlert>
+                  </div>
+                </Card>
+
+                {/* Progress & Tooltip */}
+                <Card className="p-6">
+                  <h4 className="font-semibold mb-4">Progress & Tooltips</h4>
+                  <div className="space-y-6">
+                    <div>
+                      <div className="flex justify-between mb-2">
+                        <Label>Progress: {progressValue}%</Label>
+                        <Button size="sm" variant="outline" onClick={incrementProgress}>
+                          +10%
+                        </Button>
+                      </div>
+                      <Progress value={progressValue} className="mb-4" />
+                    </div>
+
+                    <div>
+                      <Label className="mb-2 block">Interactive Tooltips</Label>
+                      <div className="flex space-x-4">
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="outline">Hover me</Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Informative tooltip</p>
+                          </TooltipContent>
+                        </Tooltip>
+
+                        <Button variant="primary">
+                          Action Button
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label className="mb-2 block">Spinners</Label>
+                      <div className="flex items-center space-x-4">
+                        <Spinner size="sm" />
+                        <Spinner size="md" />
+                        <Spinner size="lg" />
+                        <Spinner size="xl" />
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </TabsContent>
+
+            {/* Navigation Tab */}
+            <TabsContent value="navigation" className="space-y-8">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Navigation</h3>
+                <p className="text-gray-600 dark:text-gray-400">Guide your users through your application</p>
+              </div>
+
+              <div className="space-y-8">
+                {/* Breadcrumb */}
+                <Card className="p-6">
+                  <h4 className="font-semibold mb-4">Breadcrumb</h4>
+                  <Breadcrumb>
+                    <BreadcrumbList>
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="/">Home</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbSeparator />
+                      <BreadcrumbItem>
+                        <BreadcrumbPage>Navigation</BreadcrumbPage>
+                      </BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumb>
+                </Card>
+
+                {/* Menu & Pagination */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-4">Context Menu</h4>
+                    <Menu>
+                      <MenuTrigger asChild>
+                        <Button variant="outline">Open Menu</Button>
+                      </MenuTrigger>
+                      <MenuContent>
+                        <MenuItem>Profile</MenuItem>
+                        <MenuItem>Settings</MenuItem>
+                        <MenuSeparator />
+                        <MenuItem>Sign Out</MenuItem>
+                      </MenuContent>
+                    </Menu>
+                  </Card>
+
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-4">Pagination</h4>
+                    <Pagination>
+                      <PaginationContent>
+                        <PaginationItem>
+                          <PaginationPrevious href="#" />
+                        </PaginationItem>
+                        <PaginationItem>
+                          <PaginationLink href="#" isActive>1</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                          <PaginationLink href="#">2</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                          <PaginationLink href="#">3</PaginationLink>
+                        </PaginationItem>
+                        <PaginationItem>
+                          <PaginationEllipsis />
+                        </PaginationItem>
+                        <PaginationItem>
+                          <PaginationNext href="#" />
+                        </PaginationItem>
+                      </PaginationContent>
+                    </Pagination>
+                  </Card>
+                </div>
+              </div>
+            </TabsContent>
+
+            {/* Layout Tab */}
+            <TabsContent value="layout" className="space-y-8">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Layout & Structure</h3>
+                <p className="text-gray-600 dark:text-gray-400">Organize and structure your content</p>
+              </div>
+
+              <div className="space-y-8">
+                {/* Accordion */}
+                <Card className="p-6">
+                  <h4 className="font-semibold mb-4">Accordion</h4>
+                  <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>What is @gm/ui?</AccordionTrigger>
+                      <AccordionContent>
+                        A modern React component library built with TypeScript and Tailwind CSS, 
+                        offering a warm color palette and rounded designs.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2">
+                      <AccordionTrigger>How to install it?</AccordionTrigger>
+                      <AccordionContent>
+                        You can install the library via npm or yarn, then import it into your React projects.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-3">
+                      <AccordionTrigger>Is it accessible?</AccordionTrigger>
+                      <AccordionContent>
+                        Yes, all components follow WCAG accessibility standards and include 
+                        keyboard and screen reader support.
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </Card>
+
+                {/* Skeleton & Popover */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-4">Skeleton Loading</h4>
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-4">
+                        <SkeletonAvatar />
+                        <div className="space-y-2">
+                          <SkeletonText className="h-4 w-[200px]" />
+                          <SkeletonText className="h-4 w-[150px]" />
+                        </div>
+                      </div>
+                      <Separator />
+                      <SkeletonButton />
+                      <SkeletonText className="h-4 w-full" />
+                      <SkeletonText className="h-4 w-3/4" />
+                    </div>
+                  </Card>
+
+                  <Card className="p-6">
+                    <h4 className="font-semibold mb-4">Popover & Modal</h4>
+                    <div className="space-y-4">
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button variant="outline">Open Popover</Button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="space-y-2">
+                            <h4 className="font-medium">Configuration</h4>
+                            <p className="text-sm text-gray-600">
+                              Adjust your preferences here.
+                            </p>
+                            <div className="flex space-x-2">
+                              <Button size="sm">Save</Button>
+                              <Button size="sm" variant="outline">Cancel</Button>
+                            </div>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+
+                      <Modal>
+                        <ModalTrigger asChild>
+                          <Button>Open Modal</Button>
+                        </ModalTrigger>
+                        <ModalContent>
+                          <ModalHeader>
+                            <ModalTitle>Confirmation</ModalTitle>
+                            <ModalDescription>
+                              Are you sure you want to perform this action?
+                            </ModalDescription>
+                          </ModalHeader>
+                          <div className="py-4">
+                            <p>This action cannot be undone.</p>
+                          </div>
+                          <ModalFooter>
+                            <Button variant="outline">Cancel</Button>
+                            <Button variant="destructive">Confirm</Button>
+                          </ModalFooter>
+                        </ModalContent>
+                      </Modal>
+                    </div>
+                  </Card>
+                </div>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
 
-        {/* Inputs Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Input Fields</CardTitle>
-            <CardDescription>Various input styles and states</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4 max-w-md">
-              <Input placeholder="Default input" />
-              <Input variant="error" placeholder="Error state" />
-              <Input variant="success" placeholder="Success state" />
-              <Input inputSize="sm" placeholder="Small input" />
-              <Input inputSize="lg" placeholder="Large input" />
-              <Input
-                placeholder="Search..."
-                startIcon={
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                  </svg>
-                }
-              />
-              <Input
-                placeholder="Password"
-                type="password"
-                endIcon={
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                }
-              />
-              <Input disabled placeholder="Disabled input" />
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Badges Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Badges</CardTitle>
-            <CardDescription>Status indicators and labels</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-wrap gap-2">
-              <Badge>Default</Badge>
-              <Badge variant="secondary">Secondary</Badge>
-              <Badge variant="destructive">Destructive</Badge>
-              <Badge variant="success">Success</Badge>
-              <Badge variant="warning">Warning</Badge>
-              <Badge variant="outline">Outline</Badge>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Modal Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Modal Dialog</CardTitle>
-            <CardDescription>Click the button to open a modal</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Modal>
-              <ModalTrigger asChild>
-                <Button>Open Modal</Button>
-              </ModalTrigger>
-              <ModalContent>
-                <ModalHeader>
-                  <ModalTitle>Example Modal</ModalTitle>
-                  <ModalDescription>
-                    This is an example modal dialog with a title and description.
-                  </ModalDescription>
-                </ModalHeader>
-                <div className="py-4">
-                  <p>Modal content goes here. You can add any React components or HTML.</p>
-                </div>
-                <ModalFooter>
-                  <Button variant="outline">Cancel</Button>
-                  <Button>Confirm</Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-          </CardContent>
-        </Card>
-
-        {/* Spinner Section */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Loading Spinners</CardTitle>
-            <CardDescription>Various spinner sizes and colors</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-6">
-              <Spinner size="sm" />
-              <Spinner size="md" />
-              <Spinner size="lg" />
-              <Spinner size="xl" />
-              <div className="bg-gray-800 p-4 rounded">
-                <Spinner color="white" />
+        {/* Footer */}
+        <footer className="border-t bg-white dark:bg-gray-900 py-12">
+          <div className="max-w-7xl mx-auto px-6 text-center">
+            <div className="mb-8">
+              <h4 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                Ready to get started?
+              </h4>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
+                Integrate @gm/ui into your next React project
+              </p>
+              <div className="flex items-center justify-center gap-4">
+                <Button size="lg">
+                  Start Now
+                </Button>
+                <Button variant="outline" size="lg" asChild>
+                  <a href="https://storybook-gm-ui.vercel.app" target="_blank" rel="noopener noreferrer">
+                    View Documentation
+                  </a>
+                </Button>
               </div>
-              <Spinner color="secondary" />
             </div>
-          </CardContent>
-        </Card>
+            
+            <Separator className="mb-8" />
+            
+            <div className="flex items-center justify-between">
+              <p className="text-sm text-gray-600 dark:text-gray-400">
+                © 2024 Guillaume Mulier. Licensed under MIT.
+              </p>
+              <div className="flex items-center space-x-4">
+                <Badge variant="outline">v0.1.0</Badge>
+                <Badge variant="outline">React 18+</Badge>
+                <Badge variant="outline">TypeScript</Badge>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
-    </div>
+    </TooltipProvider>
   );
 } 

@@ -1,5 +1,5 @@
 {
-  "name": "@guillaume/ui",
+  "name": "@gm/ui",
   "version": "0.1.0",
   "type": "module",
   "description": "A modern React UI component library built with TypeScript and Tailwind CSS",
@@ -80,10 +80,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/guillaumemulier/guillaume-ui.git"
+    "url": "https://github.com/gmulier/gm-ui.git"
   },
   "bugs": {
-    "url": "https://github.com/guillaumemulier/guillaume-ui/issues"
+    "url": "https://github.com/gmulier/gm-ui/issues"
   },
-  "homepage": "https://github.com/guillaumemulier/guillaume-ui#readme"
+  "homepage": "https://github.com/gmulier/gm-ui#readme"
 }

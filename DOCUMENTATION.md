@@ -1,42 +1,42 @@
-# @guillaume/ui - Documentation complète
+# @gm/ui - Complete Documentation
 
-Une librairie de composants React moderne construite avec TypeScript, Tailwind CSS et Radix UI.
+A modern React component library built with TypeScript, Tailwind CSS and Radix UI.
 
-## Table des matières
+## Table of Contents
 
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Composants](#composants)
-  - [Composants de base](#composants-de-base)
-  - [Composants de formulaire](#composants-de-formulaire)
-  - [Composants de feedback](#composants-de-feedback)
-  - [Composants de navigation](#composants-de-navigation)
-  - [Composants UI](#composants-ui)
+- [Components](#components)
+  - [Core Components](#core-components)
+  - [Form Components](#form-components)
+  - [Feedback Components](#feedback-components)
+  - [Navigation Components](#navigation-components)
+  - [UI Components](#ui-components)
 - [Hooks](#hooks)
-- [Thème et personnalisation](#thème-et-personnalisation)
+- [Theme and Customization](#theme-and-customization)
 
 ## Installation
 
 ```bash
-npm install @guillaume/ui
-# ou
-yarn add @guillaume/ui
-# ou
-pnpm add @guillaume/ui
+npm install @gm/ui
+# or
+yarn add @gm/ui
+# or
+pnpm add @gm/ui
 ```
 
 ## Configuration
 
-### 1. Importer les styles CSS
+### 1. Import CSS styles
 
 ```tsx
-// Dans votre fichier principal (App.tsx ou index.tsx)
-import '@guillaume/ui/dist/index.css';
+// In your main file (App.tsx or index.tsx)
+import '@gm/ui/dist/index.css';
 ```
 
-### 2. Configuration du dark mode (optionnel)
+### 2. Dark mode configuration (optional)
 
-Ajoutez la classe `dark` à votre élément `<html>` pour activer le mode sombre :
+Add the `dark` class to your `<html>` element to enable dark mode:
 
 ```html
 <html class="dark">
@@ -44,18 +44,18 @@ Ajoutez la classe `dark` à votre élément `<html>` pour activer le mode sombre
 </html>
 ```
 
-## Composants
+## Components
 
-### Composants de base
+### Core Components
 
 #### Button
 
-Un bouton polyvalent avec plusieurs variantes et états.
+A versatile button with multiple variants and states.
 
 ```tsx
-import { Button } from '@guillaume/ui';
+import { Button } from '@gm/ui';
 
-// Variantes
+// Variants
 <Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="outline">Outline</Button>
@@ -63,26 +63,26 @@ import { Button } from '@guillaume/ui';
 <Button variant="link">Link</Button>
 <Button variant="destructive">Destructive</Button>
 
-// Tailles
+// Sizes
 <Button size="sm">Small</Button>
 <Button size="md">Medium</Button>
 <Button size="lg">Large</Button>
 <Button size="icon">🔔</Button>
 
-// Arrondi personnalisable
-<Button round="none">Carré</Button>
-<Button round="sm">Peu arrondi</Button>
-<Button round="md">Moyennement arrondi</Button>
-<Button round="lg">Arrondi (défaut)</Button>
-<Button round="xl">Très arrondi</Button>
-<Button round="2xl">Maximum arrondi</Button>
+// Customizable roundness
+<Button round="none">Square</Button>
+<Button round="sm">Slightly rounded</Button>
+<Button round="md">Moderately rounded</Button>
+<Button round="lg">Rounded (default)</Button>
+<Button round="xl">Very rounded</Button>
+<Button round="2xl">Maximum rounded</Button>
 
-// États
+// Loading states
 <Button isLoading>Loading...</Button>
 <Button disabled>Disabled</Button>
 <Button fullWidth>Full Width</Button>
 
-// Avec Slot (pour les liens)
+// With Slot (for links)
 <Button asChild>
   <a href="/home">Home</a>
 </Button>
@@ -94,29 +94,29 @@ import { Button } from '@guillaume/ui';
 - `fullWidth`: boolean
 - `isLoading`: boolean
 - `asChild`: boolean
-- `round`: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' - Contrôle l'arrondi des bords
+- `round`: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' - Controls the roundness of the edges
 
 #### Card
 
-Un conteneur flexible pour regrouper le contenu.
+A flexible container for grouping content.
 
 ```tsx
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@guillaume/ui';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@gm/ui';
 
 <Card variant="default">
   <CardHeader>
-    <CardTitle>Titre de la carte</CardTitle>
-    <CardDescription>Description de la carte</CardDescription>
+    <CardTitle>Card Title</CardTitle>
+    <CardDescription>Card Description</CardDescription>
   </CardHeader>
   <CardContent>
-    <p>Contenu de la carte</p>
+    <p>Card Content</p>
   </CardContent>
   <CardFooter>
     <Button>Action</Button>
   </CardFooter>
 </Card>
 
-// Variantes
+// Variants
 <Card variant="elevated">...</Card>
 <Card variant="outlined">...</Card>
 <Card variant="interactive">...</Card>
@@ -127,10 +127,10 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 
 #### Badge
 
-Pour afficher des statuts ou des labels.
+To display statuses or labels.
 
 ```tsx
-import { Badge } from '@guillaume/ui';
+import { Badge } from '@gm/ui';
 
 <Badge>Default</Badge>
 <Badge variant="secondary">Secondary</Badge>
@@ -145,10 +145,10 @@ import { Badge } from '@guillaume/ui';
 
 #### Spinner
 
-Indicateur de chargement animé.
+Animated loading indicator.
 
 ```tsx
-import { Spinner } from '@guillaume/ui';
+import { Spinner } from '@gm/ui';
 
 <Spinner size="sm" />
 <Spinner size="md" />
@@ -165,64 +165,64 @@ import { Spinner } from '@guillaume/ui';
 - `size`: 'sm' | 'md' | 'lg' | 'xl'
 - `color`: 'primary' | 'secondary' | 'white' | 'current'
 
-### Composants de formulaire
+### Form Components
 
 #### Input
 
-Champ de saisie avec support des icônes et états.
+Input field with icon support and states.
 
 ```tsx
-import { Input } from '@guillaume/ui';
+import { Input } from '@gm/ui';
 
 // Base
 <Input placeholder="Email" type="email" />
 
-// Variantes
+// Variants
 <Input variant="default" placeholder="Default" />
-<Input variant="error" placeholder="Erreur" />
-<Input variant="success" placeholder="Succès" />
+<Input variant="error" placeholder="Error" />
+<Input variant="success" placeholder="Success" />
 
-// Tailles
+// Sizes
 <Input inputSize="sm" placeholder="Small" />
 <Input inputSize="md" placeholder="Medium" />
 <Input inputSize="lg" placeholder="Large" />
 
-// Arrondi personnalisable
-<Input placeholder="Carré" round="none" />
-<Input placeholder="Peu arrondi" round="sm" />
-<Input placeholder="Moyennement arrondi" round="md" />
-<Input placeholder="Arrondi (défaut)" round="lg" />
-<Input placeholder="Très arrondi" round="xl" />
-<Input placeholder="Maximum arrondi" round="2xl" />
+// Customizable roundness
+<Input placeholder="Square" round="none" />
+<Input placeholder="Slightly rounded" round="sm" />
+<Input placeholder="Moderately rounded" round="md" />
+<Input placeholder="Rounded (default)" round="lg" />
+<Input placeholder="Very rounded" round="xl" />
+<Input placeholder="Maximum rounded" round="2xl" />
 
-// Avec icônes
+// With icons
 <Input 
-  placeholder="Rechercher..." 
+  placeholder="Search..." 
   startIcon={<SearchIcon />}
 />
 <Input 
-  placeholder="Mot de passe" 
+  placeholder="Password" 
   type="password"
   endIcon={<EyeIcon />}
 />
 
-// Couleur de focus personnalisée
+// Customizable focus color
 <Input 
-  placeholder="Focus violet" 
+  placeholder="Violet Focus" 
   focusColor="purple"
 />
 <Input 
-  placeholder="Focus rose" 
+  placeholder="Pink Focus" 
   focusColor="pink"
 />
 <Input 
-  placeholder="Focus vert émeraude" 
+  placeholder="Emerald Focus" 
   focusColor="emerald"
 />
 
-// Couleur personnalisée avec hex
+// Customizable color with hex
 <Input 
-  placeholder="Focus custom" 
+  placeholder="Custom Focus" 
   focusColor="#ff6b6b"
 />
 ```
@@ -232,33 +232,33 @@ import { Input } from '@guillaume/ui';
 - `inputSize`: 'sm' | 'md' | 'lg'
 - `startIcon`: ReactNode
 - `endIcon`: ReactNode
-- `focusColor`: 'purple' | 'pink' | 'emerald' | 'orange' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'teal' | string - Couleur de focus (couleurs prédéfinies ou couleur hex/css)
-- `round`: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' - Contrôle l'arrondi des bords
+- `focusColor`: 'purple' | 'pink' | 'emerald' | 'orange' | 'blue' | 'red' | 'green' | 'yellow' | 'indigo' | 'teal' | string - Focus color (predefined colors or hex/css color)
+- `round`: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' - Controls the roundness of the edges
 
 #### Textarea
 
-Zone de texte multi-lignes avec redimensionnement automatique.
+Multi-line text area with automatic resizing.
 
 ```tsx
-import { Textarea } from '@guillaume/ui';
+import { Textarea } from '@gm/ui';
 
 // Base
-<Textarea placeholder="Votre message..." />
+<Textarea placeholder="Your message..." />
 
-// Avec compteur de caractères
+// With character counter
 <Textarea 
   placeholder="Description" 
   showCount 
   maxLength={200}
 />
 
-// Redimensionnement automatique
+// Automatic resizing
 <Textarea 
   placeholder="Auto-resize" 
   autoResize
 />
 
-// Variantes et tailles
+// Variants and sizes
 <Textarea variant="error" size="lg" />
 ```
 
@@ -271,21 +271,21 @@ import { Textarea } from '@guillaume/ui';
 
 #### Checkbox
 
-Case à cocher avec label optionnel.
+Checkbox with optional label.
 
 ```tsx
-import { Checkbox } from '@guillaume/ui';
+import { Checkbox } from '@gm/ui';
 
 // Simple
 <Checkbox />
 
-// Avec label
+// With label
 <Checkbox 
-  label="J'accepte les conditions" 
-  description="En cochant, vous acceptez nos CGU"
+  label="I accept the terms" 
+  description="By checking, you agree to our terms of service"
 />
 
-// Variantes et tailles
+// Variants and sizes
 <Checkbox variant="error" size="lg" />
 <Checkbox variant="success" checked />
 ```
@@ -298,18 +298,18 @@ import { Checkbox } from '@guillaume/ui';
 
 #### Radio
 
-Boutons radio pour sélection exclusive.
+Radio buttons for exclusive selection.
 
 ```tsx
-import { Radio, RadioGroup } from '@guillaume/ui';
+import { Radio, RadioGroup } from '@gm/ui';
 
 <RadioGroup orientation="vertical">
-  <Radio name="plan" value="free" label="Plan gratuit" />
-  <Radio name="plan" value="pro" label="Plan Pro" description="10€/mois" />
+  <Radio name="plan" value="free" label="Free Plan" />
+  <Radio name="plan" value="pro" label="Pro Plan" description="10€/month" />
   <Radio name="plan" value="enterprise" label="Enterprise" />
 </RadioGroup>
 
-// Orientation horizontale
+// Horizontal orientation
 <RadioGroup orientation="horizontal">
   <Radio name="size" value="sm" label="S" />
   <Radio name="size" value="md" label="M" />
@@ -328,21 +328,21 @@ import { Radio, RadioGroup } from '@guillaume/ui';
 
 #### Switch
 
-Interrupteur on/off.
+On/off switch.
 
 ```tsx
-import { Switch } from '@guillaume/ui';
+import { Switch } from '@gm/ui';
 
 // Simple
 <Switch />
 
-// Avec label
+// With label
 <Switch 
-  label="Mode sombre" 
-  description="Activer le thème sombre"
+  label="Dark Mode" 
+  description="Enable dark theme"
 />
 
-// Variantes et tailles
+// Variants and sizes
 <Switch variant="success" size="lg" />
 <Switch variant="error" disabled />
 ```
@@ -355,7 +355,7 @@ import { Switch } from '@guillaume/ui';
 
 #### Select
 
-Menu déroulant de sélection.
+Dropdown for selection.
 
 ```tsx
 import { 
@@ -367,29 +367,29 @@ import {
   SelectGroup,
   SelectLabel,
   SelectSeparator
-} from '@guillaume/ui';
+} from '@gm/ui';
 
 <Select>
   <SelectTrigger>
-    <SelectValue placeholder="Sélectionner un fruit" />
+    <SelectValue placeholder="Select a fruit" />
   </SelectTrigger>
   <SelectContent>
     <SelectGroup>
       <SelectLabel>Fruits</SelectLabel>
-      <SelectItem value="apple">Pomme</SelectItem>
-      <SelectItem value="banana">Banane</SelectItem>
+      <SelectItem value="apple">Apple</SelectItem>
+      <SelectItem value="banana">Banana</SelectItem>
       <SelectItem value="orange">Orange</SelectItem>
     </SelectGroup>
     <SelectSeparator />
     <SelectGroup>
-      <SelectLabel>Légumes</SelectLabel>
-      <SelectItem value="carrot">Carotte</SelectItem>
-      <SelectItem value="potato">Pomme de terre</SelectItem>
+      <SelectLabel>Vegetables</SelectLabel>
+      <SelectItem value="carrot">Carrot</SelectItem>
+      <SelectItem value="potato">Potato</SelectItem>
     </SelectGroup>
   </SelectContent>
 </Select>
 
-// Avec variantes et tailles
+// With variants and sizes
 <SelectTrigger variant="error" size="lg">
   ...
 </SelectTrigger>
@@ -401,16 +401,16 @@ import {
 
 #### Label
 
-Label pour les champs de formulaire.
+Label for form fields.
 
 ```tsx
-import { Label } from '@guillaume/ui';
+import { Label } from '@gm/ui';
 
 <Label htmlFor="email">Email</Label>
-<Label htmlFor="password" required>Mot de passe</Label>
+<Label htmlFor="password" required>Password</Label>
 
-// Variantes et tailles
-<Label variant="error" size="lg">Champ en erreur</Label>
+// Variants and sizes
+<Label variant="error" size="lg">Error Field</Label>
 ```
 
 **Props:**
@@ -418,36 +418,36 @@ import { Label } from '@guillaume/ui';
 - `size`: 'sm' | 'md' | 'lg'
 - `required`: boolean
 
-### Composants de feedback
+### Feedback Components
 
 #### Alert
 
-Messages d'alerte et notifications.
+Alert messages and notifications.
 
 ```tsx
-import { Alert, AlertTitle, AlertDescription, DismissibleAlert } from '@guillaume/ui';
+import { Alert, AlertTitle, AlertDescription, DismissibleAlert } from '@gm/ui';
 
-// Alert simple
+// Simple alert
 <Alert>
   <AlertTitle>Information</AlertTitle>
   <AlertDescription>
-    Ceci est un message d'information.
+    This is an information message.
   </AlertDescription>
 </Alert>
 
-// Variantes
+// Variants
 <Alert variant="info">...</Alert>
 <Alert variant="success">...</Alert>
 <Alert variant="warning">...</Alert>
 <Alert variant="error">...</Alert>
 
-// Alert dismissible
+// Dismissible alert
 <DismissibleAlert 
   variant="success" 
-  onDismiss={() => console.log('Fermé')}
+  onDismiss={() => console.log('Closed')}
 >
-  <AlertTitle>Succès!</AlertTitle>
-  <AlertDescription>L'opération a réussi.</AlertDescription>
+  <AlertTitle>Success!</AlertTitle>
+  <AlertDescription>The operation was successful.</AlertDescription>
 </DismissibleAlert>
 ```
 
@@ -456,18 +456,18 @@ import { Alert, AlertTitle, AlertDescription, DismissibleAlert } from '@guillaum
 
 #### Progress
 
-Barre de progression.
+Progress bar.
 
 ```tsx
-import { Progress } from '@guillaume/ui';
+import { Progress } from '@gm/ui';
 
 // Simple
 <Progress value={60} />
 
-// Avec label
-<Progress value={75} showLabel label="Téléchargement" />
+// With label
+<Progress value={75} showLabel label="Downloading" />
 
-// Variantes et tailles
+// Variants and sizes
 <Progress value={90} variant="success" size="lg" />
 <Progress value={30} variant="gradient" />
 ```
@@ -481,37 +481,37 @@ import { Progress } from '@guillaume/ui';
 
 #### Toast
 
-Notifications temporaires.
+Temporary notifications.
 
 ```tsx
-import { ToastProvider, useToast } from '@guillaume/ui';
+import { ToastProvider, useToast } from '@gm/ui';
 
-// 1. Wrapper votre app avec ToastProvider
+// 1. Wrapper your app with ToastProvider
 <ToastProvider>
   <App />
 </ToastProvider>
 
-// 2. Utiliser le hook useToast
+// 2. Use the useToast hook
 function MyComponent() {
   const { addToast } = useToast();
 
   const showToast = () => {
     addToast({
-      title: 'Succès!',
-      description: 'Votre action a été effectuée.',
+      title: 'Success!',
+      description: 'Your action was completed.',
       variant: 'success',
-      duration: 5000, // ou 0 pour infini
+      duration: 5000, // or 0 for infinite
     });
   };
 
-  // Avec action
+  // With action
   const showActionToast = () => {
     addToast({
-      title: 'Fichier supprimé',
-      description: 'photo.jpg a été supprimé',
+      title: 'File Deleted',
+      description: 'photo.jpg was deleted',
       action: {
-        label: 'Annuler',
-        onClick: () => console.log('Annulé'),
+        label: 'Undo',
+        onClick: () => console.log('Undone'),
       },
     });
   };
@@ -527,24 +527,24 @@ function MyComponent() {
 
 #### Tooltip
 
-Info-bulles au survol.
+Hover tooltips.
 
 ```tsx
-import { SimpleTooltip, TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@guillaume/ui';
+import { SimpleTooltip, TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@gm/ui';
 
 // Simple
-<SimpleTooltip content="Ceci est une info-bulle">
-  <Button>Survolez-moi</Button>
+<SimpleTooltip content="This is a tooltip">
+  <Button>Hover over me</Button>
 </SimpleTooltip>
 
-// Personnalisé
+// Customized
 <TooltipProvider>
   <Tooltip>
     <TooltipTrigger asChild>
       <Button variant="outline">?</Button>
     </TooltipTrigger>
     <TooltipContent side="right" align="center">
-      <p>Information détaillée</p>
+      <p>Detailed Information</p>
     </TooltipContent>
   </Tooltip>
 </TooltipProvider>
@@ -556,33 +556,33 @@ import { SimpleTooltip, TooltipProvider, Tooltip, TooltipTrigger, TooltipContent
 - `align`: 'start' | 'center' | 'end'
 - `delayDuration`: number
 
-### Composants de navigation
+### Navigation Components
 
 #### Tabs
 
-Onglets de navigation.
+Tab navigation.
 
 ```tsx
-import { Tabs, TabsList, TabsTrigger, TabsContent } from '@guillaume/ui';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@gm/ui';
 
 <Tabs defaultValue="tab1">
   <TabsList>
-    <TabsTrigger value="tab1">Onglet 1</TabsTrigger>
-    <TabsTrigger value="tab2">Onglet 2</TabsTrigger>
-    <TabsTrigger value="tab3">Onglet 3</TabsTrigger>
+    <TabsTrigger value="tab1">Tab 1</TabsTrigger>
+    <TabsTrigger value="tab2">Tab 2</TabsTrigger>
+    <TabsTrigger value="tab3">Tab 3</TabsTrigger>
   </TabsList>
   <TabsContent value="tab1">
-    Contenu de l'onglet 1
+    Tab 1 Content
   </TabsContent>
   <TabsContent value="tab2">
-    Contenu de l'onglet 2
+    Tab 2 Content
   </TabsContent>
   <TabsContent value="tab3">
-    Contenu de l'onglet 3
+    Tab 3 Content
   </TabsContent>
 </Tabs>
 
-// Variantes
+// Variants
 <TabsList variant="outline">...</TabsList>
 <TabsList variant="pills">...</TabsList>
 ```
@@ -592,7 +592,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@guillaume/ui';
 
 #### Breadcrumb
 
-Fil d'Ariane pour la navigation.
+Breadcrumb navigation.
 
 ```tsx
 import { 
@@ -602,20 +602,20 @@ import {
   BreadcrumbLink, 
   BreadcrumbPage,
   BreadcrumbSeparator 
-} from '@guillaume/ui';
+} from '@gm/ui';
 
 <Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
-      <BreadcrumbLink href="/">Accueil</BreadcrumbLink>
+      <BreadcrumbLink href="/">Home</BreadcrumbLink>
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
-      <BreadcrumbLink href="/products">Produits</BreadcrumbLink>
+      <BreadcrumbLink href="/products">Products</BreadcrumbLink>
     </BreadcrumbItem>
     <BreadcrumbSeparator />
     <BreadcrumbItem>
-      <BreadcrumbPage>Détails</BreadcrumbPage>
+      <BreadcrumbPage>Details</BreadcrumbPage>
     </BreadcrumbItem>
   </BreadcrumbList>
 </Breadcrumb>
@@ -623,7 +623,7 @@ import {
 
 #### Menu (Dropdown)
 
-Menu déroulant contextuel.
+Contextual dropdown menu.
 
 ```tsx
 import { 
@@ -639,27 +639,27 @@ import {
   MenuSub,
   MenuSubTrigger,
   MenuSubContent
-} from '@guillaume/ui';
+} from '@gm/ui';
 
 <Menu>
   <MenuTrigger asChild>
     <Button variant="outline">Options</Button>
   </MenuTrigger>
   <MenuContent>
-    <MenuLabel>Mon compte</MenuLabel>
-    <MenuItem>Profil</MenuItem>
-    <MenuItem>Paramètres</MenuItem>
+    <MenuLabel>My Account</MenuLabel>
+    <MenuItem>Profile</MenuItem>
+    <MenuItem>Settings</MenuItem>
     <MenuSeparator />
     <MenuSub>
-      <MenuSubTrigger>Plus</MenuSubTrigger>
+      <MenuSubTrigger>More</MenuSubTrigger>
       <MenuSubContent>
-        <MenuItem>Aide</MenuItem>
-        <MenuItem>À propos</MenuItem>
+        <MenuItem>Help</MenuItem>
+        <MenuItem>About</MenuItem>
       </MenuSubContent>
     </MenuSub>
     <MenuSeparator />
     <MenuItem>
-      Déconnexion
+      Logout
       <MenuShortcut>⌘Q</MenuShortcut>
     </MenuItem>
   </MenuContent>
@@ -668,7 +668,7 @@ import {
 
 #### Pagination
 
-Navigation entre pages.
+Page navigation.
 
 ```tsx
 import { 
@@ -679,7 +679,7 @@ import {
   PaginationLink,
   PaginationEllipsis,
   PaginationNext
-} from '@guillaume/ui';
+} from '@gm/ui';
 
 <Pagination>
   <PaginationContent>
@@ -705,14 +705,14 @@ import {
 </Pagination>
 ```
 
-### Composants UI
+### UI Components
 
 #### Avatar
 
-Image de profil avec fallback.
+Profile image with fallback.
 
 ```tsx
-import { SimpleAvatar, Avatar, AvatarImage, AvatarFallback } from '@guillaume/ui';
+import { SimpleAvatar, Avatar, AvatarImage, AvatarFallback } from '@gm/ui';
 
 // Simple
 <SimpleAvatar 
@@ -722,7 +722,7 @@ import { SimpleAvatar, Avatar, AvatarImage, AvatarFallback } from '@guillaume/ui
   size="lg"
 />
 
-// Personnalisé
+// Customized
 <Avatar size="xl">
   <AvatarImage src="/avatar.jpg" alt="User" />
   <AvatarFallback>UN</AvatarFallback>
@@ -734,19 +734,19 @@ import { SimpleAvatar, Avatar, AvatarImage, AvatarFallback } from '@guillaume/ui
 
 #### Skeleton
 
-Placeholder de chargement.
+Loading placeholder.
 
 ```tsx
-import { Skeleton, SkeletonText, SkeletonAvatar, SkeletonButton } from '@guillaume/ui';
+import { Skeleton, SkeletonText, SkeletonAvatar, SkeletonButton } from '@gm/ui';
 
-// Skeleton personnalisé
+// Customized skeleton
 <Skeleton width={200} height={20} />
 <Skeleton width="100%" height={100} rounded="xl" />
 
-// Skeleton avec animation shimmer
+// Skeleton with shimmer animation
 <Skeleton variant="shimmer" width="100%" height={40} />
 
-// Skeletons pré-configurés
+// Pre-configured skeletons
 <SkeletonText lines={3} />
 <SkeletonAvatar size="lg" />
 <SkeletonButton size="md" />
@@ -760,22 +760,22 @@ import { Skeleton, SkeletonText, SkeletonAvatar, SkeletonButton } from '@guillau
 
 #### Accordion
 
-Sections repliables.
+Expandable sections.
 
 ```tsx
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@guillaume/ui';
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@gm/ui';
 
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1">
     <AccordionTrigger>Section 1</AccordionTrigger>
     <AccordionContent>
-      Contenu de la section 1
+      Section 1 Content
     </AccordionContent>
   </AccordionItem>
   <AccordionItem value="item-2">
     <AccordionTrigger>Section 2</AccordionTrigger>
     <AccordionContent>
-      Contenu de la section 2
+      Section 2 Content
     </AccordionContent>
   </AccordionItem>
 </Accordion>
@@ -788,62 +788,62 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@g
 
 #### Separator
 
-Ligne de séparation pour diviser visuellement le contenu.
+Line separator for visually dividing content.
 
 ```tsx
-import { Separator } from '@guillaume/ui';
+import { Separator } from '@gm/ui';
 
-// Horizontal (par défaut)
+// Horizontal (default)
 <div>
   <p>Section 1</p>
   <Separator className="my-4" />
   <p>Section 2</p>
 </div>
 
-// Vertical (nécessite un conteneur avec hauteur définie)
+// Vertical (requires a container with defined height)
 <div className="flex h-5 items-center space-x-4 text-sm">
   <span>Menu</span>
   <Separator orientation="vertical" />
-  <span>À propos</span>
+  <span>About</span>
   <Separator orientation="vertical" />
   <span>Contact</span>
 </div>
 
-// Dans un menu
+// In a menu
 <div className="w-48 rounded border p-2">
-  <button className="w-full p-2 text-left">Profil</button>
-  <button className="w-full p-2 text-left">Paramètres</button>
+  <button className="w-full p-2 text-left">Profile</button>
+  <button className="w-full p-2 text-left">Settings</button>
   <Separator className="my-1" />
-  <button className="w-full p-2 text-left">Déconnexion</button>
+  <button className="w-full p-2 text-left">Logout</button>
 </div>
 
-// Dans une barre d'outils
+// In a toolbar
 <div className="flex items-center gap-2">
-  <Button size="sm">Copier</Button>
+  <Button size="sm">Copy</Button>
   <Separator orientation="vertical" className="h-6" />
-  <Button size="sm">Coller</Button>
+  <Button size="sm">Paste</Button>
   <Separator orientation="vertical" className="h-6" />
-  <Button size="sm">Supprimer</Button>
+  <Button size="sm">Delete</Button>
 </div>
 ```
 
 **Props:**
-- `orientation`: 'horizontal' | 'vertical' (défaut: 'horizontal')
-- `decorative`: boolean (défaut: true) - Si false, le séparateur est accessible aux lecteurs d'écran
+- `orientation`: 'horizontal' | 'vertical' (default: 'horizontal')
+- `decorative`: boolean (default: true) - If false, the separator is accessible to screen readers
 
-**💡 Conseil:** Pour les séparateurs verticaux, assurez-vous que le conteneur parent a une hauteur définie (`h-5`, `h-6`, etc.) et utilisez `flex items-center` pour l'alignement.
+**💡 Tip:** For vertical separators, ensure the parent container has a defined height (`h-5`, `h-6`, etc.) and use `flex items-center` for alignment.
 
 #### Slider
 
-Curseur de sélection de valeur.
+Value selection slider.
 
 ```tsx
-import { Slider } from '@guillaume/ui';
+import { Slider } from '@gm/ui';
 
 // Simple
 <Slider defaultValue={[50]} max={100} />
 
-// Avec label et valeur
+// With label and value
 <Slider 
   defaultValue={[25]} 
   max={100}
@@ -851,7 +851,7 @@ import { Slider } from '@guillaume/ui';
   label="Volume"
 />
 
-// Tailles
+// Sizes
 <Slider size="sm" />
 <Slider size="md" />
 <Slider size="lg" />
@@ -864,28 +864,28 @@ import { Slider } from '@guillaume/ui';
 
 #### Popover
 
-Contenu flottant.
+Floating content.
 
 ```tsx
-import { SimplePopover, Popover, PopoverTrigger, PopoverContent } from '@guillaume/ui';
+import { SimplePopover, Popover, PopoverTrigger, PopoverContent } from '@gm/ui';
 
 // Simple
 <SimplePopover
-  trigger={<Button>Ouvrir</Button>}
-  content={<p>Contenu du popover</p>}
+  trigger={<Button>Open</Button>}
+  content={<p>Popover Content</p>}
   side="bottom"
 />
 
-// Personnalisé
+// Customized
 <Popover>
   <PopoverTrigger asChild>
-    <Button variant="outline">Infos</Button>
+    <Button variant="outline">Info</Button>
   </PopoverTrigger>
   <PopoverContent className="w-80">
     <div className="grid gap-4">
       <h4 className="font-medium">Dimensions</h4>
       <p className="text-sm text-gray-500">
-        Définissez les dimensions de l'élément.
+        Set the dimensions of the element.
       </p>
     </div>
   </PopoverContent>
@@ -900,7 +900,7 @@ import { SimplePopover, Popover, PopoverTrigger, PopoverContent } from '@guillau
 
 #### Modal
 
-Boîte de dialogue modale.
+Modal dialog box.
 
 ```tsx
 import { 
@@ -911,25 +911,25 @@ import {
   ModalTitle, 
   ModalDescription,
   ModalFooter
-} from '@guillaume/ui';
+} from '@gm/ui';
 
 <Modal>
   <ModalTrigger asChild>
-    <Button>Ouvrir Modal</Button>
+    <Button>Open Modal</Button>
   </ModalTrigger>
   <ModalContent>
     <ModalHeader>
-      <ModalTitle>Titre de la modal</ModalTitle>
+      <ModalTitle>Modal Title</ModalTitle>
       <ModalDescription>
-        Description de la modal
+        Modal Description
       </ModalDescription>
     </ModalHeader>
     <div className="py-4">
-      {/* Contenu */}
+      {/* Content */}
     </div>
     <ModalFooter>
-      <Button variant="outline">Annuler</Button>
-      <Button>Confirmer</Button>
+      <Button variant="outline">Cancel</Button>
+      <Button>Confirm</Button>
     </ModalFooter>
   </ModalContent>
 </Modal>
@@ -939,10 +939,10 @@ import {
 
 ### useToggle
 
-Gestion d'état booléen.
+Boolean state management.
 
 ```tsx
-import { useToggle } from '@guillaume/ui';
+import { useToggle } from '@gm/ui';
 
 function Component() {
   const [isOpen, toggle, setIsOpen] = useToggle(false);
@@ -950,8 +950,8 @@ function Component() {
   return (
     <>
       <button onClick={toggle}>Toggle</button>
-      <button onClick={() => setIsOpen(true)}>Ouvrir</button>
-      <button onClick={() => setIsOpen(false)}>Fermer</button>
+      <button onClick={() => setIsOpen(true)}>Open</button>
+      <button onClick={() => setIsOpen(false)}>Close</button>
     </>
   );
 }
@@ -959,17 +959,17 @@ function Component() {
 
 ### useLocalStorage
 
-Persistance dans localStorage.
+Persistence in localStorage.
 
 ```tsx
-import { useLocalStorage } from '@guillaume/ui';
+import { useLocalStorage } from '@gm/ui';
 
 function Component() {
   const [theme, setTheme] = useLocalStorage('theme', 'light');
 
   return (
     <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-      Thème actuel: {theme}
+      Current Theme: {theme}
     </button>
   );
 }
@@ -977,10 +977,10 @@ function Component() {
 
 ### useDebounce
 
-Débounce d'une valeur.
+Debounce a value.
 
 ```tsx
-import { useDebounce } from '@guillaume/ui';
+import { useDebounce } from '@gm/ui';
 
 function SearchComponent() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -988,7 +988,7 @@ function SearchComponent() {
 
   useEffect(() => {
     if (debouncedSearchTerm) {
-      // Effectuer la recherche
+      // Perform search
       performSearch(debouncedSearchTerm);
     }
   }, [debouncedSearchTerm]);
@@ -997,7 +997,7 @@ function SearchComponent() {
     <Input
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}
-      placeholder="Rechercher..."
+      placeholder="Search..."
     />
   );
 }
@@ -1005,10 +1005,10 @@ function SearchComponent() {
 
 ### useClickOutside
 
-Détecter les clics en dehors d'un élément.
+Detect clicks outside an element.
 
 ```tsx
-import { useClickOutside } from '@guillaume/ui';
+import { useClickOutside } from '@gm/ui';
 
 function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -1020,7 +1020,7 @@ function Dropdown() {
     <div ref={ref}>
       <button onClick={() => setIsOpen(!isOpen)}>Menu</button>
       {isOpen && (
-        <div>Contenu du menu</div>
+        <div>Menu Content</div>
       )}
     </div>
   );
@@ -1029,17 +1029,17 @@ function Dropdown() {
 
 ### useCopyToClipboard
 
-Copier du texte dans le presse-papiers.
+Copy text to clipboard.
 
 ```tsx
-import { useCopyToClipboard } from '@guillaume/ui';
+import { useCopyToClipboard } from '@gm/ui';
 
 function CopyButton() {
   const [copiedText, copy] = useCopyToClipboard();
 
   return (
     <button onClick={() => copy('Hello World!')}>
-      {copiedText ? 'Copié!' : 'Copier'}
+      {copiedText ? 'Copied!' : 'Copy'}
     </button>
   );
 }
@@ -1047,10 +1047,10 @@ function CopyButton() {
 
 ### useMediaQuery
 
-Responsive design programmatique.
+Programmatic responsive design.
 
 ```tsx
-import { useMediaQuery, useIsMobile, useIsTablet, useIsDesktop } from '@guillaume/ui';
+import { useMediaQuery, useIsMobile, useIsTablet, useIsDesktop } from '@gm/ui';
 
 function ResponsiveComponent() {
   const isLargeScreen = useMediaQuery('(min-width: 1024px)');
@@ -1068,41 +1068,41 @@ function ResponsiveComponent() {
 }
 ```
 
-## Thème et personnalisation
+## Theme and Customization
 
-### Classes utilitaires
+### Utility Classes
 
-La librairie utilise Tailwind CSS. Vous pouvez personnaliser les composants avec les classes Tailwind :
+The library uses Tailwind CSS. You can customize components with Tailwind classes:
 
 ```tsx
 <Button className="bg-purple-500 hover:bg-purple-600">
-  Bouton personnalisé
+  Custom Button
 </Button>
 
 <Card className="border-2 border-blue-500">
-  Carte personnalisée
+  Custom Card
 </Card>
 ```
 
-### Couleurs du thème
+### Theme Colors
 
-Les couleurs principales utilisées :
-- **Primary**: Orange chaleureux (#f97316)
-- **Secondary**: Rouge (#ef4444)
-- **Gray**: Nuances de gris pour le texte et les bordures
-- **Success**: Vert (#10b981)
-- **Warning**: Jaune (#f59e0b)
-- **Error**: Rouge (#ef4444)
+The primary colors used:
+- **Primary**: Warm orange (#f97316)
+- **Secondary**: Red (#ef4444)
+- **Gray**: Grayscale for text and borders
+- **Success**: Green (#10b981)
+- **Warning**: Yellow (#f59e0b)
+- **Error**: Red (#ef4444)
 
-### Dark mode
+### Dark Mode
 
-Tous les composants supportent automatiquement le mode sombre. Ajoutez simplement la classe `dark` à votre élément `<html>` :
+All components automatically support dark mode. Simply add the `dark` class to your `<html>` element:
 
 ```html
 <html class="dark">
 ```
 
-Ou gérez-le dynamiquement :
+Or handle it dynamically:
 
 ```tsx
 function ThemeToggle() {
@@ -1116,28 +1116,28 @@ function ThemeToggle() {
     <Switch
       checked={theme === 'dark'}
       onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
-      label="Mode sombre"
+      label="Dark Mode"
     />
   );
 }
 ```
 
-## Accessibilité
+## Accessibility
 
-Tous les composants sont construits avec l'accessibilité en tête :
-- Support complet du clavier
-- Attributs ARIA appropriés
-- Gestion du focus
-- Annonces pour les lecteurs d'écran
-- Contrastes de couleurs conformes WCAG
+All components are built with accessibility in mind:
+- Complete keyboard support
+- Appropriate ARIA attributes
+- Focus management
+- Screen reader announcements
+- Contrast color compliance with WCAG
 
-## Support navigateur
+## Browser Support
 
-- Chrome (dernières 2 versions)
-- Firefox (dernières 2 versions)
-- Safari (dernières 2 versions)
-- Edge (dernières 2 versions)
+- Chrome (last 2 versions)
+- Firefox (last 2 versions)
+- Safari (last 2 versions)
+- Edge (last 2 versions)
 
-## Licence
+## License
 
 MIT © Guillaume Mulier 

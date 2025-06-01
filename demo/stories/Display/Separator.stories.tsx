@@ -9,7 +9,7 @@ const meta = {
     layout: 'centered',
     docs: {
       description: {
-        component: 'Un séparateur visuel pour diviser le contenu. Peut être horizontal ou vertical selon le contexte.',
+        component: 'A visual separator to divide content. Can be horizontal or vertical depending on context.',
       },
     },
   },
@@ -18,7 +18,7 @@ const meta = {
     orientation: {
       control: 'select',
       options: ['horizontal', 'vertical'],
-      description: 'Orientation du séparateur',
+      description: 'Separator orientation',
       table: {
         type: { summary: 'horizontal | vertical' },
         defaultValue: { summary: 'horizontal' },
@@ -26,7 +26,7 @@ const meta = {
     },
     decorative: {
       control: 'boolean',
-      description: 'Si true, le séparateur est purement décoratif (pas lu par les lecteurs d\'écran)',
+      description: 'If true, the separator is purely decorative (not read by screen readers)',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' },
@@ -34,7 +34,7 @@ const meta = {
     },
     className: {
       control: 'text',
-      description: 'Classes CSS supplémentaires',
+      description: 'Additional CSS classes',
       table: {
         type: { summary: 'string' },
       },
@@ -55,11 +55,11 @@ export const Default: Story = {
       return (
         <div className="flex h-20 items-center space-x-4 text-sm">
           <div className="flex h-full items-center">
-            <span>Gauche</span>
+            <span>Left</span>
           </div>
           <Separator {...args} />
           <div className="flex h-full items-center">
-            <span>Droite</span>
+            <span>Right</span>
           </div>
         </div>
       );
@@ -68,11 +68,11 @@ export const Default: Story = {
     return (
       <div className="w-64">
         <div>
-          <span className="text-sm">Contenu du haut</span>
+          <span className="text-sm">Top content</span>
         </div>
         <Separator {...args} className="my-4" />
         <div>
-          <span className="text-sm">Contenu du bas</span>
+          <span className="text-sm">Bottom content</span>
         </div>
       </div>
     );
@@ -123,7 +123,7 @@ export const Orientations: Story = {
   render: () => (
     <div className="space-y-8">
       <div>
-        <h4 className="mb-4 text-sm font-medium">Horizontal (par défaut)</h4>
+        <h4 className="mb-4 text-sm font-medium">Horizontal (default)</h4>
         <div className="w-64">
           <div className="text-sm text-gray-600">Section 1</div>
           <Separator className="my-3" />
@@ -134,11 +134,11 @@ export const Orientations: Story = {
       </div>
       
       <div>
-        <h4 className="mb-4 text-sm font-medium">Vertical (avec hauteur définie)</h4>
+        <h4 className="mb-4 text-sm font-medium">Vertical (with defined height)</h4>
         <div className="flex h-16 items-center space-x-4 text-sm text-gray-600">
           <div>Menu</div>
           <Separator orientation="vertical" />
-          <div>À propos</div>
+          <div>About</div>
           <Separator orientation="vertical" />
           <div>Contact</div>
           <Separator orientation="vertical" />

@@ -36,12 +36,12 @@ const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
     const generatedId = React.useId();
     const checkboxId = id || generatedId;
 
-    // Calculer le padding-top pour aligner la première ligne du label avec le centre de la checkbox
+    // Calculate padding-top to align the first line of the label with the center of the checkbox
     const getLabelPadding = (checkboxSize: 'sm' | 'md' | 'lg') => {
       switch (checkboxSize) {
-        case 'sm': return 'pt-1'; // Plus de padding pour faire descendre le texte
-        case 'md': return 'pt-0.5'; // Micro-ajustement en plus pour medium
-        case 'lg': return '-mt-px'; // Marge négative pour faire encore plus monter le texte
+        case 'sm': return 'pt-1'; // More padding to move text down
+        case 'md': return 'pt-0.5'; // Micro-adjustment for medium
+        case 'lg': return '-mt-px'; // Negative margin to move text up even more
         default: return 'pt-0.5';
       }
     };

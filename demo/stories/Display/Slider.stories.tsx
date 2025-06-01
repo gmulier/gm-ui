@@ -306,9 +306,9 @@ export const ColorPicker: Story = {
   },
 };
 
-// Stories demandées par l'utilisateur
+// Stories requested by user
 
-// Story avec mode controlled et useState visible
+// Story with controlled mode and visible useState
 export const ControlledSlider: Story = {
   render: (args) => {
     const [value, setValue] = React.useState(args.defaultValue || [50]);
@@ -348,7 +348,7 @@ export const ControlledSlider: Story = {
   },
 };
 
-// Story dédiée pour Range Slider
+// Dedicated story for Range Slider
 export const RangeSliderDemo: Story = {
   args: {
     defaultValue: [25, 75],
@@ -360,7 +360,7 @@ export const RangeSliderDemo: Story = {
   },
 };
 
-// Story dédiée pour état disabled
+// Dedicated story for disabled state
 export const DisabledSlider: Story = {
   args: {
     defaultValue: [60],
@@ -372,12 +372,12 @@ export const DisabledSlider: Story = {
   },
 };
 
-// Story pour démontrer showValue avec min/max
+// Story to demonstrate showValue with min/max
 export const ShowValueDemo: Story = {
   render: () => (
     <div className="space-y-6">
       <div>
-        <h3 className="text-sm font-medium mb-2">Sans showValue</h3>
+        <h3 className="text-sm font-medium mb-2">Without showValue</h3>
         <Slider
           defaultValue={[30]}
           min={0}
@@ -386,7 +386,7 @@ export const ShowValueDemo: Story = {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Avec showValue (valeur + min/max)</h3>
+        <h3 className="text-sm font-medium mb-2">With showValue (value + min/max)</h3>
         <Slider
           defaultValue={[30]}
           min={0}
@@ -396,7 +396,7 @@ export const ShowValueDemo: Story = {
         />
       </div>
       <div>
-        <h3 className="text-sm font-medium mb-2">Range avec showValue</h3>
+        <h3 className="text-sm font-medium mb-2">Range with showValue</h3>
         <Slider
           defaultValue={[20, 80]}
           min={0}

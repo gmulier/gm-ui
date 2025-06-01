@@ -38,7 +38,7 @@ const meta = {
     },
     focusColor: {
       control: 'text',
-      description: 'Couleur de focus : couleurs prédéfinies (purple, pink, emerald...) ou couleur hex (#ff6b6b)',
+      description: 'Focus color: predefined colors (purple, pink, emerald...) or hex color (#ff6b6b)',
     },
   },
 } satisfies Meta<typeof Input>;
@@ -150,42 +150,42 @@ export const NumberInput: Story = {
 // Custom Focus Colors
 export const PurpleFocus: Story = {
   args: {
-    placeholder: 'Focus violet',
+    placeholder: 'Purple focus',
     focusColor: 'purple',
   },
 };
 
 export const PinkFocus: Story = {
   args: {
-    placeholder: 'Focus rose',
+    placeholder: 'Pink focus',
     focusColor: 'pink',
   },
 };
 
 export const EmeraldFocus: Story = {
   args: {
-    placeholder: 'Focus émeraude',
+    placeholder: 'Emerald focus',
     focusColor: 'emerald',
   },
 };
 
 export const OrangeFocus: Story = {
   args: {
-    placeholder: 'Focus orange',
+    placeholder: 'Orange focus',
     focusColor: 'orange',
   },
 };
 
 export const CustomHexFocus: Story = {
   args: {
-    placeholder: 'Focus couleur custom',
+    placeholder: 'Custom color focus',
     focusColor: '#ff6b6b',
   },
 };
 
 export const CustomFocusWithIcon: Story = {
   args: {
-    placeholder: 'Rechercher avec focus violet...',
+    placeholder: 'Search with purple focus...',
     focusColor: 'purple',
     startIcon: <SearchIcon />,
   },
@@ -194,35 +194,35 @@ export const CustomFocusWithIcon: Story = {
 // Round Variations
 export const SquareInput: Story = {
   args: {
-    placeholder: 'Input carré',
+    placeholder: 'Square input',
     round: 'none',
   },
 };
 
 export const SlightlyRounded: Story = {
   args: {
-    placeholder: 'Légèrement arrondi',
+    placeholder: 'Slightly rounded',
     round: 'sm',
   },
 };
 
 export const MediumRounded: Story = {
   args: {
-    placeholder: 'Moyennement arrondi',
+    placeholder: 'Medium rounded',
     round: 'md',
   },
 };
 
 export const VeryRounded: Story = {
   args: {
-    placeholder: 'Très arrondi',
+    placeholder: 'Very rounded',
     round: 'xl',
   },
 };
 
 export const MaxRounded: Story = {
   args: {
-    placeholder: 'Maximum arrondi',
+    placeholder: 'Maximum rounded',
     round: '2xl',
   },
 }; 

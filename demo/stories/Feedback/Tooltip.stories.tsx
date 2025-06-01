@@ -159,7 +159,7 @@ export const IconButton: StoryObj = {
         </div>
       </div>
 
-      {/* Navigation et liens */}
+      {/* Navigation and links */}
       <div className="space-y-2">
         <h4 className="text-sm font-medium text-gray-700">Navigation</h4>
         <div className="flex gap-2 flex-wrap">
@@ -189,9 +189,9 @@ export const IconButton: StoryObj = {
         </div>
       </div>
 
-      {/* Visibilité et statut */}
+      {/* Visibility and status */}
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-gray-700">Visibilité & Statut</h4>
+        <h4 className="text-sm font-medium text-gray-700">Visibility & Status</h4>
         <div className="flex gap-2 flex-wrap">
           <SimpleTooltip content="View">
             <Button size="icon" variant="ghost">
@@ -231,9 +231,9 @@ export const IconButton: StoryObj = {
         </div>
       </div>
 
-      {/* Synchronisation */}
+      {/* Synchronization */}
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-gray-700">Synchronisation</h4>
+        <h4 className="text-sm font-medium text-gray-700">Synchronization</h4>
         <div className="flex gap-2 flex-wrap">
           <SimpleTooltip content="Refresh">
             <Button size="icon" variant="ghost">
@@ -253,9 +253,9 @@ export const IconButton: StoryObj = {
         </div>
       </div>
 
-      {/* Information et aide */}
+      {/* Information and help */}
       <div className="space-y-2">
-        <h4 className="text-sm font-medium text-gray-700">Information & Aide</h4>
+        <h4 className="text-sm font-medium text-gray-700">Information & Help</h4>
         <div className="flex gap-2 flex-wrap">
           <SimpleTooltip content="Information">
             <Button size="icon" variant="ghost">

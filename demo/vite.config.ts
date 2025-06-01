@@ -5,7 +5,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@guillaume/ui': '../src',
+      '@gm/ui': '../src',
     },
   },
   // Optimisations pour les performances

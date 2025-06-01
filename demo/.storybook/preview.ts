@@ -10,11 +10,11 @@ const preview: Preview = {
        date: /Date$/i,
       },
     },
-    // Configuration optimisée pour la documentation
+    // Optimized configuration for documentation
     docs: {
-      docsPage: () => null, // Désactive DocsPage par défaut pour plus de vitesse
+      docsPage: () => null, // Disable default DocsPage for better performance
     },
-    // Améliorer la performance en réduisant les logs
+    // Improve performance by reducing logs
     actions: {
       disable: false,
     },
@@ -41,7 +41,7 @@ const preview: Preview = {
     (Story: any, context: any) => {
       const theme = context.globals.theme;
       
-      // Appliquer la classe dark/light sur l'élément html
+      // Apply dark/light class on html element
       React.useEffect(() => {
         document.documentElement.classList.remove('dark', 'light');
         document.documentElement.classList.add(theme);

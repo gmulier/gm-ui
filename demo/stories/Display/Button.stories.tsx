@@ -249,35 +249,35 @@ export const FormActions: Story = {
 // Round Variations
 export const SquareButton: Story = {
   args: {
-    children: 'Bouton carré',
+    children: 'Square Button',
     round: 'none',
   },
 };
 
 export const SlightlyRoundedButton: Story = {
   args: {
-    children: 'Légèrement arrondi',
+    children: 'Slightly Rounded',
     round: 'sm',
   },
 };
 
 export const MediumRoundedButton: Story = {
   args: {
-    children: 'Moyennement arrondi',
+    children: 'Medium Rounded',
     round: 'md',
   },
 };
 
 export const VeryRoundedButton: Story = {
   args: {
-    children: 'Très arrondi',
+    children: 'Very Rounded',
     round: 'xl',
   },
 };
 
 export const MaxRoundedButton: Story = {
   args: {
-    children: 'Maximum arrondi',
+    children: 'Maximum Rounded',
     round: '2xl',
   },
 };
@@ -286,10 +286,10 @@ export const RoundVariations: Story = {
   render: () => (
     <div className="space-y-4">
       <div className="flex gap-2 flex-wrap">
-        <Button round="none">Carré</Button>
+        <Button round="none">Square</Button>
         <Button round="sm">Sm</Button>
         <Button round="md">Md</Button>
-        <Button round="lg">Lg (défaut)</Button>
+        <Button round="lg">Lg (default)</Button>
         <Button round="xl">Xl</Button>
         <Button round="2xl">2xl</Button>
       </div>

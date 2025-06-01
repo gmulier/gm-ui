@@ -195,13 +195,13 @@ export const Documentation: StoryObj = {
           <AccordionTrigger>Installation</AccordionTrigger>
           <AccordionContent>
             <pre className="bg-gray-100 p-3 rounded-md text-sm">
-              <code>npm install @guillaume/ui</code>
+              <code>npm install @gm/ui</code>
             </pre>
             <p className="mt-2 text-sm text-gray-600">
               Or if you're using yarn:
             </p>
             <pre className="bg-gray-100 p-3 rounded-md text-sm mt-2">
-              <code>yarn add @guillaume/ui</code>
+              <code>yarn add @gm/ui</code>
             </pre>
           </AccordionContent>
         </AccordionItem>
@@ -209,7 +209,7 @@ export const Documentation: StoryObj = {
           <AccordionTrigger>Basic Usage</AccordionTrigger>
           <AccordionContent>
             <pre className="bg-gray-100 p-3 rounded-md text-sm overflow-x-auto">
-              <code>{`import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@guillaume/ui';
+              <code>{`import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@gm/ui';
 
 <Accordion type="single" collapsible>
   <AccordionItem value="item-1">

@@ -43,11 +43,11 @@ export interface InputProps
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, variant, inputSize, round, type, startIcon, endIcon, focusColor, style, ...props }, ref) => {
-    // Gérer les couleurs de focus
+    // Handle focus colors
     const getFocusStyle = () => {
       if (!focusColor) return {};
       
-      // Si c'est une couleur prédéfinie
+      // If it's a predefined color
       const predefinedColors = {
         purple: '#8b5cf6',
         pink: '#ec4899', 
@@ -68,13 +68,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       } as React.CSSProperties;
     };
 
-    // Classes de focus
+    // Focus classes
     const getFocusClasses = () => {
       if (focusColor) {
         return 'focus-visible:border-2 focus-visible:border-[var(--focus-border-color)]';
       }
       
-      // Classes de focus par défaut si pas de couleur personnalisée
+      // Default focus classes if no custom color
       switch (variant) {
         case 'error':
           return 'focus-visible:border-2 focus-visible:border-red-600';
