@@ -4,7 +4,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../utils/cn';
 
 const switchVariants = cva(
-  'peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=unchecked]:bg-gray-200 dark:data-[state=checked]:bg-primary-600 dark:data-[state=unchecked]:bg-gray-800',
+  'peer inline-flex shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors duration-150 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary-500 data-[state=unchecked]:bg-gray-200 dark:data-[state=checked]:bg-primary-600 dark:data-[state=unchecked]:bg-gray-800',
   {
     variants: {
       size: {
@@ -13,10 +13,10 @@ const switchVariants = cva(
         lg: 'h-6 w-11',
       },
       variant: {
-        default: 'focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400',
-        success: 'data-[state=checked]:bg-green-500 focus-visible:ring-green-500',
-        warning: 'data-[state=checked]:bg-yellow-500 focus-visible:ring-yellow-500',
-        error: 'data-[state=checked]:bg-red-500 focus-visible:ring-red-500',
+        default: 'focus-visible:border-2 focus-visible:border-primary-500 dark:focus-visible:border-primary-400',
+        success: 'data-[state=checked]:bg-green-500 focus-visible:border-2 focus-visible:border-green-500',
+        warning: 'data-[state=checked]:bg-yellow-500 focus-visible:border-2 focus-visible:border-yellow-500',
+        error: 'data-[state=checked]:bg-red-500 focus-visible:border-2 focus-visible:border-red-500',
       },
     },
     defaultVariants: {

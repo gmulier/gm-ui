@@ -3,18 +3,24 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../utils/cn';
 
 const radioVariants = cva(
-  'aspect-square h-4 w-4 rounded-full border ring-offset-white transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:ring-offset-gray-950',
+  [
+    'appearance-none rounded-full border-2 cursor-pointer transition-colors duration-150',
+    'checked:border-primary-500 checked:bg-primary-500 checked:bg-[radial-gradient(circle_at_center,_white_30%,_transparent_30%)]',
+    'hover:border-gray-400 focus-visible:outline-none focus-visible:border-primary-500 focus-visible:shadow-[0_0_0_2px] focus-visible:shadow-primary-500/20',
+    'disabled:cursor-not-allowed disabled:opacity-50',
+    'dark:border-gray-600 dark:hover:border-gray-500 dark:checked:border-primary-400 dark:checked:bg-primary-400'
+  ],
   {
     variants: {
       variant: {
-        default: 'border-gray-300 text-primary-500 focus-visible:ring-primary-500 dark:border-gray-700',
-        error: 'border-red-500 text-red-500 focus-visible:ring-red-500',
-        success: 'border-green-500 text-green-500 focus-visible:ring-green-500',
+        default: 'border-gray-300',
+        error: 'border-red-500 checked:border-red-500 checked:bg-red-500 focus-visible:border-red-500 focus-visible:shadow-red-500/20',
+        success: 'border-green-500 checked:border-green-500 checked:bg-green-500 focus-visible:border-green-500 focus-visible:shadow-green-500/20',
       },
       size: {
-        sm: 'h-3 w-3',
-        md: 'h-4 w-4',
-        lg: 'h-5 w-5',
+        sm: 'h-4 w-4',
+        md: 'h-5 w-5',
+        lg: 'h-6 w-6',
       },
     },
     defaultVariants: {
@@ -36,10 +42,10 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     const generatedId = React.useId();
     const radioId = id || generatedId;
 
-    const radio = (
+    const radioInput = (
       <input
         type="radio"
-        className={cn(radioVariants({ variant, size, className }))}
+        className={cn(radioVariants({ variant, size }), className)}
         ref={ref}
         id={radioId}
         {...props}
@@ -47,21 +53,23 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
     );
 
     if (!label) {
-      return radio;
+      return radioInput;
     }
 
     return (
-      <div className="flex items-start space-x-2">
-        {radio}
+      <div className="flex items-start gap-3">
+        {radioInput}
         <div className="space-y-1 leading-none">
           <label
             htmlFor={radioId}
-            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            className="text-sm font-medium leading-none cursor-pointer"
           >
             {label}
           </label>
           {description && (
-            <p className="text-xs text-gray-500 dark:text-gray-400">{description}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              {description}
+            </p>
           )}
         </div>
       </div>
@@ -71,7 +79,7 @@ const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
 
 Radio.displayName = 'Radio';
 
-// RadioGroup component for grouping radio buttons
+// RadioGroup simple pour les cas où on veut grouper visuellement
 export interface RadioGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   orientation?: 'horizontal' | 'vertical';
 }
@@ -84,7 +92,7 @@ const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>(
         role="radiogroup"
         className={cn(
           'flex',
-          orientation === 'vertical' ? 'flex-col space-y-2' : 'flex-row space-x-4',
+          orientation === 'vertical' ? 'flex-col space-y-3' : 'flex-row space-x-6',
           className
         )}
         {...props}

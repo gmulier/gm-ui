@@ -3,13 +3,13 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '../utils/cn';
 
 const checkboxVariants = cva(
-  'peer h-4 w-4 shrink-0 rounded-md border ring-offset-white transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:ring-offset-gray-950',
+  'peer h-4 w-4 shrink-0 rounded-md border transition-colors duration-150 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 dark:bg-gray-950 box-border',
   {
     variants: {
       variant: {
-        default: 'border-gray-300 text-primary-500 focus-visible:ring-primary-500 dark:border-gray-700',
-        error: 'border-red-500 text-red-500 focus-visible:ring-red-500',
-        success: 'border-green-500 text-green-500 focus-visible:ring-green-500',
+        default: 'border-gray-300 text-primary-500 focus-visible:border-2 focus-visible:border-primary-500 dark:border-gray-700 dark:focus-visible:border-primary-400',
+        error: 'border-red-500 text-red-500 focus-visible:border-2 focus-visible:border-red-600',
+        success: 'border-green-500 text-green-500 focus-visible:border-2 focus-visible:border-green-600',
       },
       size: {
         sm: 'h-3 w-3',
