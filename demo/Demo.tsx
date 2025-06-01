@@ -379,9 +379,9 @@ export function Demo() {
                       <CardDescription>Click to interact</CardDescription>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-center">
+                      <div className="flex flex-col items-center justify-center gap-3">
                         <Spinner size="md" />
-                        <p className="text-sm mt-2">Loading...</p>
+                        <p className="text-sm">Loading...</p>
                       </div>
                     </CardContent>
                   </Card>

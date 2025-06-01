@@ -173,6 +173,8 @@ export {
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
+  PaginationPreviousWithText,
+  PaginationNextWithText,
 } from './components/Pagination';
 
 export {

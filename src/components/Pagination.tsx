@@ -63,7 +63,7 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to previous page"
-    className={cn('gap-1 pl-2.5', className)}
+    className={cn('h-9 w-9', className)}
     {...props}
   >
     <svg
@@ -75,7 +75,7 @@ const PaginationPrevious = ({
     >
       <path d="m15 18-6-6 6-6" />
     </svg>
-    <span>Previous</span>
+    <span className="sr-only">Previous page</span>
   </PaginationLink>
 );
 PaginationPrevious.displayName = 'PaginationPrevious';
@@ -86,10 +86,57 @@ const PaginationNext = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to next page"
-    className={cn('gap-1 pr-2.5', className)}
+    className={cn('h-9 w-9', className)}
     {...props}
   >
-    <span>Next</span>
+    <svg
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+    >
+      <path d="m9 18 6-6-6-6" />
+    </svg>
+    <span className="sr-only">Next page</span>
+  </PaginationLink>
+);
+PaginationNext.displayName = 'PaginationNext';
+
+// Alternative versions with text labels
+const PaginationPreviousWithText = ({
+  className,
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) => (
+  <PaginationLink
+    aria-label="Go to previous page"
+    className={cn('gap-2 px-3 h-9 w-auto', className)}
+    {...props}
+  >
+    <svg
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      viewBox="0 0 24 24"
+    >
+      <path d="m15 18-6-6 6-6" />
+    </svg>
+    <span className="text-sm">Prev</span>
+  </PaginationLink>
+);
+PaginationPreviousWithText.displayName = 'PaginationPreviousWithText';
+
+const PaginationNextWithText = ({
+  className,
+  ...props
+}: React.ComponentProps<typeof PaginationLink>) => (
+  <PaginationLink
+    aria-label="Go to next page"
+    className={cn('gap-2 px-3 h-9 w-auto', className)}
+    {...props}
+  >
+    <span className="text-sm">Next</span>
     <svg
       className="h-4 w-4"
       fill="none"
@@ -101,7 +148,7 @@ const PaginationNext = ({
     </svg>
   </PaginationLink>
 );
-PaginationNext.displayName = 'PaginationNext';
+PaginationNextWithText.displayName = 'PaginationNextWithText';
 
 const PaginationEllipsis = ({
   className,
@@ -136,4 +183,6 @@ export {
   PaginationPrevious,
   PaginationNext,
   PaginationEllipsis,
+  PaginationPreviousWithText,
+  PaginationNextWithText,
 }; 

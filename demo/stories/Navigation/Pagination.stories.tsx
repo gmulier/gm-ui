@@ -7,7 +7,9 @@ import {
   PaginationPrevious,
   PaginationLink,
   PaginationEllipsis,
-  PaginationNext
+  PaginationNext,
+  PaginationPreviousWithText,
+  PaginationNextWithText
 } from '../../../src/components/Pagination';
 
 const meta = {
@@ -292,6 +294,77 @@ export const SearchResults: Story = {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
+    </div>
+  ),
+};
+
+// Clean Icons Only (Recommended)
+export const CleanIcons: Story = {
+  render: () => (
+    <div className="space-y-6">
+      <div>
+        <h4 className="text-sm font-medium mb-2">Clean Design - Icons Only (Recommended)</h4>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPrevious href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#" isActive>2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">8</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">9</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">10</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNext href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
+
+      <div>
+        <h4 className="text-sm font-medium mb-2">Alternative - With Text Labels</h4>
+        <Pagination>
+          <PaginationContent>
+            <PaginationItem>
+              <PaginationPreviousWithText href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#" isActive>2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationEllipsis />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">10</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationNextWithText href="#" />
+            </PaginationItem>
+          </PaginationContent>
+        </Pagination>
+      </div>
     </div>
   ),
 }; 
