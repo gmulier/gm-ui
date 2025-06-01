@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd demo && npm run build-storybook",
+  "outputDirectory": "demo/storybook-static",
+  "installCommand": "npm install && cd demo && npm install",
+  "devCommand": "cd demo && npm run storybook",
+  "framework": null
+} 
