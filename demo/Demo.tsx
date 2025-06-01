@@ -756,61 +756,102 @@ export function Demo() {
                   <Card className="p-6">
                     <h4 className="font-semibold mb-4">Skeleton Loading</h4>
                     <div className="space-y-4">
-                      <div className="flex items-center space-x-4">
-                        <SkeletonAvatar />
-                        <div className="space-y-2">
-                          <SkeletonText className="h-4 w-[200px]" />
-                          <SkeletonText className="h-4 w-[150px]" />
+                      <div className="flex items-center gap-4">
+                        <SkeletonAvatar size="md" />
+                        <div className="flex-1 space-y-2">
+                          <Skeleton width="70%" height={16} />
+                          <Skeleton width="50%" height={14} />
                         </div>
                       </div>
+                      
                       <Separator />
-                      <SkeletonButton />
-                      <SkeletonText className="h-4 w-full" />
-                      <SkeletonText className="h-4 w-3/4" />
+                      
+                      <SkeletonText lines={3} />
+                      
+                      <div className="flex gap-2">
+                        <SkeletonButton size="md" />
+                        <SkeletonButton size="sm" width={80} />
+                      </div>
                     </div>
                   </Card>
 
                   <Card className="p-6">
                     <h4 className="font-semibold mb-4">Popover & Modal</h4>
-                    <div className="space-y-4">
-                      <Popover>
-                        <PopoverTrigger asChild>
-                          <Button variant="outline">Open Popover</Button>
-                        </PopoverTrigger>
-                        <PopoverContent>
-                          <div className="space-y-2">
-                            <h4 className="font-medium">Configuration</h4>
-                            <p className="text-sm text-gray-600">
-                              Adjust your preferences here.
-                            </p>
-                            <div className="flex space-x-2">
-                              <Button size="sm">Save</Button>
-                              <Button size="sm" variant="outline">Cancel</Button>
+                    <div className="space-y-6">
+                      {/* Popover Section */}
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                          <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300">Popover</h5>
+                        </div>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                          Lightweight overlay for contextual information
+                        </p>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <Button variant="outline" className="w-full">
+                              <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                              </svg>
+                              Show Settings
+                            </Button>
+                          </PopoverTrigger>
+                          <PopoverContent>
+                            <div className="space-y-3">
+                              <h4 className="font-medium">Quick Settings</h4>
+                              <p className="text-sm text-gray-600 dark:text-gray-400">
+                                Adjust your preferences here.
+                              </p>
+                              <div className="flex gap-2">
+                                <Button size="sm">Apply</Button>
+                                <Button size="sm" variant="outline">Reset</Button>
+                              </div>
                             </div>
-                          </div>
-                        </PopoverContent>
-                      </Popover>
+                          </PopoverContent>
+                        </Popover>
+                      </div>
 
-                      <Modal>
-                        <ModalTrigger asChild>
-                          <Button>Open Modal</Button>
-                        </ModalTrigger>
-                        <ModalContent>
-                          <ModalHeader>
-                            <ModalTitle>Confirmation</ModalTitle>
-                            <ModalDescription>
-                              Are you sure you want to perform this action?
-                            </ModalDescription>
-                          </ModalHeader>
-                          <div className="py-4">
-                            <p>This action cannot be undone.</p>
-                          </div>
-                          <ModalFooter>
-                            <Button variant="outline">Cancel</Button>
-                            <Button variant="destructive">Confirm</Button>
-                          </ModalFooter>
-                        </ModalContent>
-                      </Modal>
+                      <Separator />
+
+                      {/* Modal Section */}
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                          <h5 className="text-sm font-medium text-gray-700 dark:text-gray-300">Modal</h5>
+                        </div>
+                        <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                          Full overlay dialog for important actions
+                        </p>
+                        <Modal>
+                          <ModalTrigger asChild>
+                            <Button className="w-full">
+                              <svg className="h-4 w-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                              </svg>
+                              Delete Account
+                            </Button>
+                          </ModalTrigger>
+                          <ModalContent>
+                            <ModalHeader>
+                              <ModalTitle>Delete Account</ModalTitle>
+                              <ModalDescription>
+                                This action cannot be undone. This will permanently delete your account and remove all data.
+                              </ModalDescription>
+                            </ModalHeader>
+                            <div className="py-4">
+                              <div className="bg-red-50 dark:bg-red-950 border border-red-200 dark:border-red-800 rounded-lg p-4">
+                                <p className="text-sm text-red-700 dark:text-red-300">
+                                  ⚠️ All your projects, settings, and data will be permanently lost.
+                                </p>
+                              </div>
+                            </div>
+                            <ModalFooter>
+                              <Button variant="outline">Cancel</Button>
+                              <Button variant="destructive">I understand, delete my account</Button>
+                            </ModalFooter>
+                          </ModalContent>
+                        </Modal>
+                      </div>
                     </div>
                   </Card>
                 </div>
