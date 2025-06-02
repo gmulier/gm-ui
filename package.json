@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "npm run dev --workspace=packages/demo",
     "build": "npm run build --workspace=packages/ui",
-    "build:demo": "npm run build --workspace=packages/demo",
+    "build:demo": "npm run build --workspace=packages/ui && npm run build --workspace=packages/demo",
     "build:storybook": "npm run build-storybook --workspace=packages/storybook",
     "demo": "npm run dev --workspace=packages/demo",
     "storybook": "npm run storybook --workspace=packages/storybook",
