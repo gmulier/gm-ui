@@ -1,318 +1,163 @@
 # @gm/ui
 
-A modern React UI component library built with TypeScript and Tailwind CSS. Features a warm color palette with rounded components for a friendly, engaging user experience.
+A modern, accessible React component library built with TypeScript, Tailwind CSS, and Radix UI primitives.
 
-## 🎨 Design Philosophy
+[![NPM Version](https://img.shields.io/npm/v/@gm/ui?style=flat-square)](https://www.npmjs.com/package/@gm/ui)
+[![License](https://img.shields.io/npm/l/@gm/ui?style=flat-square)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 
-- **Warm Colors**: Orange, red, and yellow tones create an inviting interface
-- **Rounded Components**: Soft edges (border-radius: xl/2xl) for a modern look
-- **Performance First**: Optimized bundle size and runtime performance
-- **Type Safety**: Full TypeScript support with comprehensive type definitions
-- **Dark Mode Ready**: All components support automatic dark mode switching
+## ✨ Features
 
-## 🚀 Quick Start - See the Demo
-
-To see all components in action in your browser:
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/gmulier/gm-ui.git
-cd gm-ui
-
-# 2. Install dependencies
-npm install
-
-# 3. Install demo dependencies
-cd demo && npm install && cd ..
-
-# 4. Launch the demo
-npm run demo
-```
-
-The demo will automatically open at `http://localhost:5173` and you can see all components with their different variants.
+- 🎨 **Modern Design** - Clean, beautiful components
+- ♿ **Accessible** - Built on Radix UI primitives  
+- 🎯 **TypeScript** - Full type safety
+- 🎨 **Customizable** - Tailwind CSS + CVA variants
+- 📱 **Responsive** - Mobile-first approach
+- 🌙 **Dark Mode** - Built-in dark mode support
+- ⚡ **Optimized** - Tree-shakeable bundle
 
 ## 📦 Installation
 
-### Using npm link (Local Development)
-
-1. Clone this repository:
 ```bash
-git clone https://github.com/gmulier/gm-ui.git
-cd gm-ui
+# From GitHub (recommended)
+npm install github:gmulier/gm-ui
+
+# From npm (coming soon)
+npm install @gm/ui
 ```
 
-2. Install dependencies and build:
+## 🚀 Quick Start
+
+### 1. Install Tailwind CSS
+
 ```bash
-npm install
-npm run build
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
 ```
 
-3. Create a local link:
-```bash
-npm link
-```
-
-4. In your React project:
-```bash
-npm link @gm/ui
-```
-
-### Using as a Git dependency
-
-Add to your `package.json`:
-```json
-{
-  "dependencies": {
-    "@gm/ui": "github:gmulier/gm-ui"
-  }
-}
-```
-
-## 🚀 Usage
-
-### Setup Tailwind CSS
-
-Add the UI library to your Tailwind CSS configuration:
+### 2. Configure Tailwind
 
 ```js
 // tailwind.config.js
-module.exports = {
+export default {
   content: [
-    // ... your other content paths
+    "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@gm/ui/dist/**/*.{js,ts,jsx,tsx}",
   ],
-  // ... rest of your config
+  // ...
 }
 ```
 
-### Import Components
+### 3. Import styles and use components
 
 ```tsx
-import { Button, Card, Input, Modal, Badge, Spinner } from '@gm/ui';
+import '@gm/ui/styles';
+import { Button, Card, CardContent, CardHeader, CardTitle } from '@gm/ui';
 
-function MyComponent() {
+function App() {
   return (
-    <Card variant="elevated" padding="lg">
-      <CardHeader>
-        <CardTitle>Welcome</CardTitle>
-        <CardDescription>Get started with @gm/ui</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <Input placeholder="Enter your name" />
-          <Button variant="primary" size="md">
-            Get Started
+    <div className="p-8">
+      <Card className="w-96">
+        <CardHeader>
+          <CardTitle>Welcome to @gm/ui</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Button onClick={() => alert('Hello!')}>
+            Click me!
           </Button>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
 ```
 
 ## 📚 Components
 
-### Button
+### Display
+- **Avatar** - User avatars with fallback
+- **Badge** - Status indicators and labels  
+- **Button** - Interactive buttons with variants
+- **Card** - Content containers
+- **Separator** - Visual dividers
+- **Skeleton** - Loading placeholders
+- **Spinner** - Loading indicators
 
-A versatile button component with multiple variants and states.
+### Form
+- **Input** - Text input fields
+- **Textarea** - Multi-line text input
+- **Checkbox** - Checkboxes with custom styling
+- **Switch** - Toggle switches
+- **Radio** - Radio button groups
+- **Select** - Dropdown selection
+- **Slider** - Range sliders
+
+### Feedback
+- **Alert** - Alert messages
+- **Progress** - Progress indicators
+- **Toast** - Notification toasts
+- **Tooltip** - Contextual help
+
+### Navigation
+- **Breadcrumb** - Navigation breadcrumbs
+- **Menu** - Dropdown menus
+- **Pagination** - Page navigation
+- **Tabs** - Tab navigation
+
+### Overlay
+- **Accordion** - Collapsible content
+- **Modal** - Modal dialogs
+- **Popover** - Floating content
+
+## 🎨 Customization
 
 ```tsx
-<Button variant="primary" size="md" isLoading={false}>
-  Click me
+// Use variants
+<Button variant="destructive" size="lg">Delete</Button>
+<Badge variant="success">Active</Badge>
+
+// Custom styling
+<Button className="bg-purple-500 hover:bg-purple-600">
+  Custom Button
 </Button>
 ```
 
-**Props:**
-- `variant`: 'primary' | 'secondary' | 'outline' | 'ghost' | 'link' | 'destructive'
-- `size`: 'sm' | 'md' | 'lg' | 'icon'
-- `isLoading`: boolean (shows loading spinner)
-- `fullWidth`: boolean
-- `asChild`: boolean (use with Radix UI Slot)
+## 🏗️ Development
 
-### Card
+### Monorepo Structure
 
-A flexible container component with header, content, and footer sections.
-
-```tsx
-<Card variant="elevated" padding="md">
-  <CardHeader>
-    <CardTitle>Card Title</CardTitle>
-    <CardDescription>Card description</CardDescription>
-  </CardHeader>
-  <CardContent>Content goes here</CardContent>
-  <CardFooter>Footer content</CardFooter>
-</Card>
+```
+gm-ui/
+├── packages/
+│   ├── ui/           ← Component library (@gm/ui)
+│   ├── demo/         ← Demo application
+│   └── storybook/    ← Storybook documentation
+└── package.json
 ```
 
-**Props:**
-- `variant`: 'default' | 'elevated' | 'outlined' | 'interactive'
-- `padding`: 'none' | 'sm' | 'md' | 'lg'
-
-### Input
-
-A styled input component with icon support.
-
-```tsx
-<Input
-  variant="default"
-  inputSize="md"
-  placeholder="Search..."
-  startIcon={<SearchIcon />}
-/>
-```
-
-**Props:**
-- `variant`: 'default' | 'error' | 'success'
-- `inputSize`: 'sm' | 'md' | 'lg'
-- `startIcon`: ReactNode
-- `endIcon`: ReactNode
-
-### Modal
-
-A dialog component built with Radix UI.
-
-```tsx
-<Modal>
-  <ModalTrigger asChild>
-    <Button>Open Modal</Button>
-  </ModalTrigger>
-  <ModalContent>
-    <ModalHeader>
-      <ModalTitle>Modal Title</ModalTitle>
-      <ModalDescription>Modal description</ModalDescription>
-    </ModalHeader>
-    <div>Modal content</div>
-    <ModalFooter>
-      <Button variant="outline">Cancel</Button>
-      <Button>Confirm</Button>
-    </ModalFooter>
-  </ModalContent>
-</Modal>
-```
-
-### Badge
-
-A small label component for status and categorization.
-
-```tsx
-<Badge variant="success">Active</Badge>
-```
-
-**Props:**
-- `variant`: 'default' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning'
-
-### Spinner
-
-A loading indicator component with multiple sizes.
-
-```tsx
-<Spinner size="md" />
-```
-
-**Props:**
-- `size`: 'sm' | 'md' | 'lg' | 'xl'
-
-### Avatar
-
-Profile picture component with fallback support.
-
-```tsx
-<Avatar>
-  <AvatarImage src="/avatar.jpg" />
-  <AvatarFallback>JD</AvatarFallback>
-</Avatar>
-```
-
-### Input with Icons
-
-Enhanced input component with start and end icon support.
-
-```tsx
-<Input
-  placeholder="Search..."
-  startIcon={<SearchIcon />}
-  endIcon={<ClearIcon />}
-/>
-```
-
-## 🎯 Complete Example
-
-```tsx
-import { 
-  Button, 
-  Card, 
-  CardHeader, 
-  CardTitle, 
-  CardContent,
-  Input,
-  Badge,
-  Avatar,
-  AvatarImage,
-  AvatarFallback
-} from '@gm/ui';
-
-export function UserProfile() {
-  return (
-    <Card variant="elevated" className="max-w-md">
-      <CardHeader className="text-center">
-        <Avatar className="mx-auto mb-4">
-          <AvatarImage src="/user-avatar.jpg" />
-          <AvatarFallback>JD</AvatarFallback>
-        </Avatar>
-        <CardTitle>John Doe</CardTitle>
-        <Badge variant="success">Active</Badge>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <Input placeholder="Email address" />
-        <Input placeholder="Phone number" />
-        <Button variant="primary" fullWidth>
-          Update Profile
-        </Button>
-      </CardContent>
-    </Card>
-  );
-}
-```
-
-## 🛠 Development
-
-### Setup
+### Scripts
 
 ```bash
-# Install dependencies
-npm install
+# Development
+npm run dev          # Start demo app
+npm run storybook    # Start Storybook
+npm run build        # Build library
+npm run type-check   # TypeScript validation
 
-# Build the library
-npm run build
-
-# Watch for changes during development
-npm run dev
+# In packages/ui/
+npm run dev          # Development with watch
+npm run build        # Production build
 ```
 
-### Run Storybook
+## 📖 Documentation
 
-```bash
-# Start Storybook
-npm run storybook
-
-# Build Storybook for production
-npm run build-storybook
-```
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
+- **[Storybook](https://gm-ui-storybook.vercel.app)** - Interactive documentation
+- **[Demo](https://gm-ui-demo.vercel.app)** - Live examples
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome! Please read our contributing guidelines.
 
-## 📧 Contact
+## 📄 License
 
-Guillaume Mulier - [@gmulier](https://github.com/gmulier)
-
-Project Link: [https://github.com/gmulier/gm-ui](https://github.com/gmulier/gm-ui) 
+MIT © [Guillaume Mulier](https://github.com/gmulier) 

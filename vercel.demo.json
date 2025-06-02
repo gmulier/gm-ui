@@ -1,0 +1,8 @@
+{
+  "name": "gm-ui-demo",
+  "buildCommand": "npm run build:demo",
+  "outputDirectory": "packages/demo/dist",
+  "installCommand": "npm install",
+  "framework": null,
+  "nodeVersion": "18.x"
+} 
