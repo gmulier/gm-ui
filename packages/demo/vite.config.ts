@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@gm/ui': path.resolve(__dirname, '../ui/src'),
+      '@gm/ui': path.resolve(__dirname, '../ui/dist/index.esm.js'),
     },
   },
   // Performance optimizations

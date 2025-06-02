@@ -20,12 +20,12 @@ const config: StorybookConfig = {
     "disableTelemetry": true
   },
   "viteFinal": async (config, { configType }) => {
-    // Configure @gm/ui alias to point to the ui/src folder
+    // Configure @gm/ui alias to point to the ui/dist ESM file
     config.resolve = {
       ...(config.resolve || {}),
       alias: {
         ...(config.resolve?.alias || {}),
-        '@gm/ui': path.resolve(__dirname, '../../ui/src'),
+        '@gm/ui': path.resolve(__dirname, '../../ui/dist/index.esm.js'),
       },
     };
 
