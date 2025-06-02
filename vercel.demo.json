@@ -1,13 +1,5 @@
 {
   "name": "gm-ui-demo",
-  "buildCommand": "cd packages/ui && npm install && npm run build && cd ../demo && npm install && npm run build",
   "outputDirectory": "packages/demo/dist",
-  "installCommand": "echo 'Skipping auto install'",
-  "framework": null,
-  "nodeVersion": "20.x",
-  "functions": {
-    "app/api/**/*.js": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  "framework": null
 } 

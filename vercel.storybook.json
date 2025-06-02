@@ -1,13 +1,5 @@
 {
   "name": "gm-ui-storybook",
-  "buildCommand": "cd packages/ui && npm install && npm run build && cd ../storybook && npm install && npm run build-storybook",
   "outputDirectory": "packages/storybook/storybook-static",
-  "installCommand": "echo 'Skipping auto install'",
-  "framework": null,
-  "nodeVersion": "20.x",
-  "functions": {
-    "app/api/**/*.js": {
-      "runtime": "nodejs20.x"
-    }
-  }
+  "framework": null
 } 

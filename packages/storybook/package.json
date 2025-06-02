@@ -7,7 +7,7 @@
     "storybook": "storybook dev -p 6006 --no-open --quiet",
     "storybook:verbose": "storybook dev -p 6006 --no-open",
     "storybook:fast": "storybook dev -p 6006 --no-open --quiet --disable-telemetry",
-    "build-storybook": "storybook build",
+    "build-storybook": "cd ../ui && npm install && npm run build && cd ../storybook && storybook build",
     "clean": "rm -rf storybook-static node_modules/.cache",
     "reset": "npm run clean && npm install"
   },
