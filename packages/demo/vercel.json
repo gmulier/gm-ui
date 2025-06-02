@@ -1,7 +1,4 @@
 {
-  "name": "gm-ui-demo",
-  "outputDirectory": "packages/demo/dist",
-  "framework": null,
   "rewrites": [
     {
       "source": "/(.*)",
