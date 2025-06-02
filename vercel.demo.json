@@ -2,7 +2,12 @@
   "name": "gm-ui-demo",
   "buildCommand": "npm run build:demo",
   "outputDirectory": "packages/demo/dist",
-  "installCommand": "npm install",
+  "installCommand": "npm ci --legacy-peer-deps",
   "framework": null,
-  "nodeVersion": "18.x"
+  "nodeVersion": "20.x",
+  "functions": {
+    "app/api/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  }
 } 
