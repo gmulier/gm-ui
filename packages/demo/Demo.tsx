@@ -170,7 +170,7 @@ export function Demo() {
                         </a>
                         
                         <a 
-                          href="https://www.linkedin.com/in/guillaume-mulier" 
+                          href="https://www.linkedin.com/in/guillaumemulier" 
                           target="_blank" 
                           rel="noopener noreferrer"
                           className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
