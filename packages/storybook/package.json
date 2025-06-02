@@ -1,11 +1,15 @@
 {
-  "name": "@gm/ui-storybook",
+  "name": "@gm/storybook",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "storybook": "storybook dev -p 6006 --no-open --quiet",
-    "build-storybook": "storybook build"
+    "storybook:verbose": "storybook dev -p 6006 --no-open",
+    "storybook:fast": "storybook dev -p 6006 --no-open --quiet --disable-telemetry",
+    "build-storybook": "storybook build",
+    "clean": "rm -rf storybook-static node_modules/.cache",
+    "reset": "npm run clean && npm install"
   },
   "dependencies": {
     "react": "^18.3.1",
