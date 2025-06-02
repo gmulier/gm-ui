@@ -1,7 +1,6 @@
 {
   "name": "gm-ui-storybook",
   "outputDirectory": "packages/storybook/storybook-static",
-  "framework": null,
-  "buildCommand": "npm run build:storybook",
+  "buildCommand": "cd packages/storybook && npm run build-storybook",
   "installCommand": "npm install"
 } 
