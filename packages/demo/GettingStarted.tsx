@@ -303,7 +303,7 @@ document.documentElement.classList.toggle('dark');`}
                     </Card>
                   </a>
                   
-                  <a href="https://storybook-gm-ui.vercel.app" target="_blank" rel="noopener noreferrer" className="block">
+                  <a href="https://gm-ui-storybook.vercel.app" target="_blank" rel="noopener noreferrer" className="block">
                     <Card variant="interactive" className="group cursor-pointer h-full">
                       <CardContent className="p-6 text-center">
                         <div className="text-4xl mb-4">📚</div>

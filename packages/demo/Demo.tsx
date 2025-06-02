@@ -200,7 +200,7 @@ export function Demo() {
                   </a>
                 </Button>
                 <Button variant="outline" size="sm" asChild>
-                  <a href="https://storybook-gm-ui.vercel.app" target="_blank" rel="noopener noreferrer">
+                  <a href="https://gm-ui-storybook.vercel.app" target="_blank" rel="noopener noreferrer">
                     📚 Technical Documentation
                   </a>
                 </Button>
@@ -877,7 +877,7 @@ export function Demo() {
                   </a>
                 </Button>
                 <Button variant="outline" size="lg" asChild>
-                  <a href="https://storybook-gm-ui.vercel.app" target="_blank" rel="noopener noreferrer">
+                  <a href="https://gm-ui-storybook.vercel.app" target="_blank" rel="noopener noreferrer">
                     View Documentation
                   </a>
                 </Button>
